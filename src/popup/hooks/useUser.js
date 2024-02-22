@@ -64,6 +64,8 @@ const GET_USER_INFO = gql`
     }
     hasSubdomain
     username
+    name
+    imageId
   }
 
   fragment useIsVerifiedBookAuthor_user on User {
@@ -120,7 +122,9 @@ export const useUser = () => {
 
     setUser({
       username: data.viewer.username,
-      id: data.viewer.id
+      id: data.viewer.id,
+      name: data.viewer.name,
+      imageId: data.viewer.imageId,
     })
   }, [data])
 
