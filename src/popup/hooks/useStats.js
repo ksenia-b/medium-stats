@@ -34,6 +34,16 @@ const GET_STATS = gql`
     ...StoriesStatsTable_post
     ...MobileStoriesStatsTable_post
     __typename
+    clapCount
+    viewerEdge {
+      __typename
+      id
+      clapCount
+      readingList
+      shareKey
+      creatorPartnerProgramEnrollmentStatus
+    }
+
   }
 
   fragment StoriesStatsTable_post on Post {
