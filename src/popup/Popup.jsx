@@ -15,7 +15,7 @@ export const Popup = () => {
       {user ? (
         <>
           <User user={user}/>
-          <ViewsReadsChart username={user.username}/>
+          {/*<ViewsReadsChart username={user.username}/>*/}
           <Stats username={user.username}/>
         </>
       ) : null}
