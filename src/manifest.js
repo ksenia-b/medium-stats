@@ -8,6 +8,10 @@ export default defineManifest({
   description: packageData.description,
   version: packageData.version,
   manifest_version: 3,
+  host_permissions: [
+    "https://medium.com/",
+    "https://cdn-images-1.medium.com/"
+  ],
   icons: {
     16: 'img/logo-16.png',
     32: 'img/logo-34.png',
@@ -26,8 +30,15 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*'],
-      js: ['src/contentScript/index.js'],
+      matches: [
+        "https://*.medium.com/me/stats*",
+        "https://medium.com/me/stats*"
+      ],
+      exclude_matches: [
+        "https://*.medium.com/me/stats/post*",
+        "https://medium.com/me/stats/post*"
+      ],
+      js: ['src/contentScript/homeStats.js'],
     },
   ],
   side_panel: {
@@ -40,7 +51,7 @@ export default defineManifest({
     },
   ],
   permissions: ['sidePanel', 'storage'],
-  chrome_url_overrides: {
-    newtab: 'newtab.html',
-  },
+  // chrome_url_overrides: {
+  //   newtab: 'newtab.html',
+  // },
 })
