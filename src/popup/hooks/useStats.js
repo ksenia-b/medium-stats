@@ -35,6 +35,9 @@ const GET_STATS = gql`
     ...MobileStoriesStatsTable_post
     __typename
     clapCount
+    postResponses {
+      count
+    }
     viewerEdge {
       __typename
       id
@@ -174,9 +177,30 @@ export const useStats = ({username}) => {
     }
   });
 
+  const parsedData = data && data.user.postsConnection.edges.map(edge => {
+    const node = edge.node || {};
+    return ({
+      clapCount: node.clapCount,
+      id: node.id,
+      postResponses: node.postResponses?.count,
+      readingTime: node.readingTime,
+      reads: node.totalStats?.reads,
+      views: node.totalStats?.views,
+      slug: node.uniqueSlug,
+    })
+
+  });
+
+  if (!loading && parsedData) {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      var activeTab = tabs[0];
+      chrome.tabs.sendMessage(activeTab.id, {"message": "your_message", data: parsedData});
+    });
+  }
+
   return {
     loading,
     error,
-    data
+    data: parsedData || []
   }
 }
