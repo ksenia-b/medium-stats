@@ -1,11 +1,13 @@
 let isUpdateStatsTable = false;
 console.info('contentScript is running')
+
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if( request.message === "your_message" ) {
       console.log("Message received in content script", request.data, isUpdateStatsTable);
       // Perform your action here
-      if (!isUpdateStatsTable) {
+      if (!isUpdateStatsTable && request.data?.length) {
+        console.log('------', request.data)
         isUpdateStatsTable = true;
         updateStatsTable(request.data);
       }
@@ -36,7 +38,11 @@ function updateStatsTable(data) {
     console.log('postId: ', postId);
     const post = data.find(post => post.id === postId);
 
-    addColumnToTableRow(row, getReadRatio(post.reads, post.views), index);
+    if (!post && !post?.views) {
+      return;
+    }
+
+    addColumnToTableRow(row, getReadRatio(post?.reads, post?.views), index);
     addColumnToTableRow(row, post.clapCount, index);
     addColumnToTableRow(row, post.postResponses, index);
   })
@@ -85,7 +91,7 @@ function getFirstLinkHref(row) {
   return link ? link.href : null;
 }
 
-function getReadRatio(reads, views) {
+function getReadRatio(reads = 0, views = 0) {
   const ratio = ((reads / views) * 100).toFixed(1);
   return `${ratio}%`;
 }

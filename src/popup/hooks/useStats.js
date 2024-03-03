@@ -1,5 +1,6 @@
 import {gql, useQuery} from "@apollo/client";
 import {useEffect, useState} from "react";
+import { calculateEarnings } from '../../utils';
 
 const GET_STATS = gql`
   query LifetimeStoriesStatsQuery($username: ID!, $first: Int!, $after: String!, $orderBy: UserPostsOrderBy, $filter: UserPostsFilter) {
@@ -187,9 +188,17 @@ export const useStats = ({username}) => {
       reads: node.totalStats?.reads,
       views: node.totalStats?.views,
       slug: node.uniqueSlug,
+      earnings: node?.earnings
     })
+  }) || [];
 
-  });
+  const totals = parsedData.reduce((acc, post) => ({
+    reads: acc.reads + (post.reads || 0),
+    views: acc.views + (post.views || 0),
+    claps: acc.claps + (post.clapCount || 0),
+    responses: acc.responses + (post.postResponses || 0),
+    income: acc.income + calculateEarnings(post.earnings?.total)
+  }), {reads: 0, views: 0, earnings: 0, claps: 0, responses: 0, income: 0});
 
   if (!loading && parsedData) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -201,6 +210,7 @@ export const useStats = ({username}) => {
   return {
     loading,
     error,
-    data: parsedData || []
+    data: parsedData,
+    totals
   }
 }
