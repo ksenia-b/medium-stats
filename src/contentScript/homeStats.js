@@ -1,21 +1,3 @@
-let isUpdateStatsTable = false;
-console.info('contentScript is running')
-
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if( request.message === "your_message" ) {
-      console.log("Message received in content script", request.data, isUpdateStatsTable);
-      // Perform your action here
-      if (!isUpdateStatsTable && request.data?.length) {
-        console.log('------', request.data)
-        isUpdateStatsTable = true;
-        updateStatsTable(request.data);
-      }
-
-    }
-  }
-);
-
 
 function updateStatsTable(data) {
   if (!data) {
@@ -33,7 +15,8 @@ function updateStatsTable(data) {
 
   const rows = table.querySelectorAll('tbody tr');
   rows.forEach((row, index) => {
-    console.log('row: ', row);
+    console.log('row: ', row, getFirstLinkHref(row));
+
     const postId = getPostId(getFirstLinkHref(row));
     console.log('postId: ', postId);
     const post = data.find(post => post.id === postId);
@@ -95,3 +78,22 @@ function getReadRatio(reads = 0, views = 0) {
   const ratio = ((reads / views) * 100).toFixed(1);
   return `${ratio}%`;
 }
+
+
+function scrollPageToBottomAndThenToTop() {
+  window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo(0, 0);
+}
+
+(async () => {
+  // Sends a message to the service worker and receives a tip in response
+  scrollPageToBottomAndThenToTop();
+  const user = await chrome.runtime.sendMessage({ type: 'GET_USER' });
+  const stats = await chrome.runtime.sendMessage({ type: 'GET_STATS', username: user?.username });
+
+
+  console.log('data: ----', user);
+  console.log('stats: ----', stats);
+
+  setTimeout(() => updateStatsTable(stats), 1000);
+})();
