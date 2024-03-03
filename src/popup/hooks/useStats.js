@@ -170,7 +170,7 @@ export const useStats = ({username}) => {
   const { loading, error, data } = useQuery(GET_STATS, {
     variables: {
       username,
-      first: 10,
+      first: 100,
       after: "",
       orderBy: null,
       filter: null

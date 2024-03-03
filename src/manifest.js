@@ -31,12 +31,12 @@ export default defineManifest({
   content_scripts: [
     {
       matches: [
-        "https://*.medium.com/me/stats*",
-        "https://medium.com/me/stats*"
+        "https://*.medium.com/*/stats*",
+        "https://medium.com/*/stats*"
       ],
       exclude_matches: [
-        "https://*.medium.com/me/stats/post*",
-        "https://medium.com/me/stats/post*"
+        "https://*.medium.com/*/stats/post*",
+        "https://medium.com/*/stats/post*"
       ],
       js: ['src/contentScript/homeStats.js'],
     },

@@ -3,11 +3,11 @@ console.info('contentScript is running')
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if( request.message === "your_message" ) {
-      console.log("Message received in content script", request.data);
+      console.log("Message received in content script", request.data, isUpdateStatsTable);
       // Perform your action here
       if (!isUpdateStatsTable) {
-        updateStatsTable(request.data);
         isUpdateStatsTable = true;
+        updateStatsTable(request.data);
       }
 
     }
@@ -45,21 +45,27 @@ function updateStatsTable(data) {
 function addColumnToTableHead(table, title) {
   const thead = table.querySelector('thead');
   const tr = thead.querySelector('tr');
+  const theLastTh = tr.querySelector('th:last-child');
+  const classesFromTheLastTh = theLastTh.getAttribute('class');
   const th = document.createElement('th');
-  th.classList.add('be', 'b', 'bf', 'z', 'cj', 'ji', 'jm', 'jp', 'uf');
+
+  th.classList.add(...classesFromTheLastTh.split(' '));
   th.innerHTML = title;
   tr.appendChild(th);
 }
 
 function addColumnToTableRow(row, value, index = -1) {
   const td = document.createElement('td');
-  td.classList.add('am');
+  const lastTdClasses = row.querySelector('td:last-child').getAttribute('class');
+  td.classList.add(...lastTdClasses.split(' '));
 
   const a = document.createElement('a');
-  a.classList.add('af', 'ag', 'ah', 'ai', 'aj', 'ak', 'al', index === 0 ? 'mi' : 'nx', 'an', 'ao', 'ap', 'aq', 'ar', 'as', 'at', 'jo', 'jn', 'jq', 'jp', 'cl', 'l');
+  const lastAClasses = row.querySelector('td:last-child a').getAttribute('class');
+  a.classList.add(...lastAClasses.split(' '));
 
   const div = document.createElement('div');
-  div.classList.add('be', 'b', 'nu', 'nv', 'bj', 'nw');
+  const lastDivClasses = row.querySelector('td:last-child a div').getAttribute('class');
+  div.classList.add(...lastDivClasses.split(' '));
 
   div.innerHTML = value;
   a.appendChild(div);
