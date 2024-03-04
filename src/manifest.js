@@ -10,7 +10,8 @@ export default defineManifest({
   manifest_version: 3,
   host_permissions: [
     "https://medium.com/",
-    "https://cdn-images-1.medium.com/"
+    "https://cdn-images-1.medium.com/",
+    "https://extension-tips.glitch.me/*"
   ],
   icons: {
     16: 'img/logo-16.png',
@@ -50,7 +51,7 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: ['sidePanel', 'storage'],
+  permissions: ['sidePanel', 'storage', 'activeTab', 'alarms'],
   // chrome_url_overrides: {
   //   newtab: 'newtab.html',
   // },
