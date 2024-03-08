@@ -40,6 +40,7 @@ export default defineManifest({
         "https://medium.com/*/stats/post*"
       ],
       js: ['src/contentScript/homeStats.js'],
+      css: ['src/contentScript/homeStats.css']
     },
   ],
   side_panel: {
@@ -50,6 +51,10 @@ export default defineManifest({
       resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
       matches: [],
     },
+    {
+      resources: ['src/contentScript/homeStats.css'],
+      matches: [],
+    }
   ],
   permissions: ['sidePanel', 'storage', 'activeTab', 'alarms'],
   // chrome_url_overrides: {
