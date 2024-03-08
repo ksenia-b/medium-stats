@@ -79,21 +79,59 @@ function getReadRatio(reads = 0, views = 0) {
   return `${ratio}%`;
 }
 
-
-function scrollPageToBottomAndThenToTop() {
-  window.scrollTo(0, document.body.scrollHeight);
-  window.scrollTo(0, 0);
+function findElementByContent(content) {
+  const h2Elements = document.getElementsByTagName('h2');
+  for(let i = 0; i < h2Elements.length; i++) {
+    if(h2Elements[i].textContent === content) {
+      return h2Elements[i];
+    }
+  }
+  return null;
 }
 
+function buildLifetimeTotals(totals) {
+  const labels = {
+    "reads": "Reads",
+    "views": "Views",
+    "claps": "Claps",
+    "responses": "Responses",
+    "income": "Earnings"
+  }
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('lifetime-totals');
+
+  for (let key in totals) {
+    const titleContentDiv = document.createElement('div');
+
+    const value = document.createElement('h2');
+    value.textContent = key === 'income' ? `$${Number(totals[key]).toFixed(1)}` : totals[key];
+
+    const label = document.createElement('div');
+    label.textContent = labels[key] || key;
+
+    titleContentDiv.appendChild(value);
+    titleContentDiv.appendChild(label);
+
+    wrapper.appendChild(titleContentDiv);
+  }
+
+  const lifetime = findElementByContent('Lifetime');
+  const parent = lifetime.parentNode;
+
+  parent.parentNode.insertBefore(wrapper, parent.nextSibling);
+}
+
+
 (async () => {
-  // Sends a message to the service worker and receives a tip in response
-  scrollPageToBottomAndThenToTop();
   const user = await chrome.runtime.sendMessage({ type: 'GET_USER' });
   const stats = await chrome.runtime.sendMessage({ type: 'GET_STATS', username: user?.username });
 
 
-  console.log('data: ----', user);
-  console.log('stats: ----', stats);
+  // console.log('data: ----', user);
+  // console.log('stats: ----', stats);
 
-  setTimeout(() => updateStatsTable(stats), 1000);
+  setTimeout(() => updateStatsTable(stats?.list), 1000);
+  buildLifetimeTotals(stats?.totals)
+
+
 })();
