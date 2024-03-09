@@ -75,7 +75,7 @@ function getFirstLinkHref(row) {
 }
 
 function getReadRatio(reads = 0, views = 0) {
-  const ratio = ((reads / views) * 100).toFixed(1);
+  const ratio = ((reads / views) * 100)?.toFixed(1);
   return `${ratio}%`;
 }
 
@@ -125,10 +125,13 @@ function buildLifetimeTotals(totals) {
 (async () => {
   const user = await chrome.runtime.sendMessage({ type: 'GET_USER' });
   const stats = await chrome.runtime.sendMessage({ type: 'GET_STATS', username: user?.username });
+  // console.log('stats?.list: ', stats?.list[0])
+  // const dailyIncome = await chrome.runtime.sendMessage({ type: 'GET_DAILY_INCOME', posts: stats?.list });
 
+  // console.log('dailyIncome: ', dailyIncome);
 
   // console.log('data: ----', user);
-  // console.log('stats: ----', stats);
+  console.log('stats: ----', stats);
 
   setTimeout(() => updateStatsTable(stats?.list), 1000);
   buildLifetimeTotals(stats?.totals)

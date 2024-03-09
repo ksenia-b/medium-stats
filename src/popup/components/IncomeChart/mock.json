@@ -1,0 +1,887 @@
+[
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 60
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 120
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709424000000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 59
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 12
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 0
+      }
+    ],
+    "postId": "04a1b028faf3"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708214400000,
+        "amount": 172
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708300800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708387200000,
+        "amount": 4
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708646400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 0
+      }
+    ],
+    "postId": "cb913b30de23"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708041600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708128000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708214400000,
+        "amount": 113
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708300800000,
+        "amount": 23
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708387200000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 0
+      }
+    ],
+    "postId": "759ab74f1621"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707696000000,
+        "amount": 87
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707782400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707868800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707955200000,
+        "amount": 101
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708041600000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708128000000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708214400000,
+        "amount": 111
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708300800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708387200000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708473600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 12
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708646400000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 112
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 22
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 4
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 6
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 0
+      }
+    ],
+    "postId": "a8f2c0de438a"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707609600000,
+        "amount": 89
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707696000000,
+        "amount": 25
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707782400000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707868800000,
+        "amount": 145
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707955200000,
+        "amount": 10
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708041600000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708128000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708214400000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708473600000,
+        "amount": 43
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708646400000,
+        "amount": 119
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 233
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 99
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 0
+      }
+    ],
+    "postId": "9ffc3afa0625"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707004800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707091200000,
+        "amount": 8
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707177600000,
+        "amount": 11
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707264000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707350400000,
+        "amount": 315
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707436800000,
+        "amount": 246
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707523200000,
+        "amount": 9
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707609600000,
+        "amount": 68
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707696000000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707868800000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707955200000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708041600000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708128000000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708214400000,
+        "amount": 164
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708300800000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708387200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708473600000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708646400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 14
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 6
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709424000000,
+        "amount": 6
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 67
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 12
+      }
+    ],
+    "postId": "176fea9fd762"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707004800000,
+        "amount": 5
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707177600000,
+        "amount": 11
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707264000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707350400000,
+        "amount": 60
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707436800000,
+        "amount": 371
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707523200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707609600000,
+        "amount": 5
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707782400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707868800000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707955200000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708041600000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708128000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 4
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 3
+      }
+    ],
+    "postId": "61c416456ab9"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708646400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 11
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 0
+      }
+    ],
+    "postId": "35e77a859c9a"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1707177600000,
+        "amount": 4
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 5
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709424000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 7
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709596800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709683200000,
+        "amount": 8
+      }
+    ],
+    "postId": "28e868092dd7"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 5
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709596800000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 0
+      }
+    ],
+    "postId": "0393c8ab6969"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708905600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      }
+    ],
+    "postId": "db50b70b9b41"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708560000000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709078400000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 14
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709251200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 38
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709510400000,
+        "amount": 4
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709596800000,
+        "amount": 3
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709769600000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 2
+      }
+    ],
+    "postId": "de463340af9e"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709164800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709337600000,
+        "amount": 3
+      }
+    ],
+    "postId": "99bbd92e721b"
+  },
+  {
+    "data": [
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708732800000,
+        "amount": 1
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708819200000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1708992000000,
+        "amount": 2
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709596800000,
+        "amount": 0
+      },
+      {
+        "__typename": "DailyPostEarning",
+        "periodStartedAt": 1709856000000,
+        "amount": 0
+      }
+    ],
+    "postId": "dd6a44d34e80"
+  }
+]
