@@ -1,9 +1,10 @@
 import './reset.css'
 import './Popup.css'
 import { useUser } from './hooks/useUser'
-import {Stats} from "./components/Stats";
+// import {Stats} from "./components/Stats";
 import {User} from "./components/User";
-import {ViewsReadsChart} from "./components/ViewsReadsChart/";
+// import {ViewsReadsChart} from "./components/ViewsReadsChart/";
+import { IncomeChart} from "./components/IncomeChart/IncomeChart";
 
 
 export const Popup = () => {
@@ -16,7 +17,8 @@ export const Popup = () => {
         <>
           <User user={user}/>
           {/*<ViewsReadsChart username={user.username}/>*/}
-          <Stats username={user.username}/>
+          {/*<Stats username={user.username}/>*/}
+          <IncomeChart username={user.username}/>
         </>
       ) : null}
     </main>

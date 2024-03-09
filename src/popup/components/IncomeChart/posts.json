@@ -1,0 +1,695 @@
+[
+  {
+    "clapCount": 466,
+    "id": "04a1b028faf3",
+    "postResponses": 7,
+    "readingTime": 3.0556603773584907,
+    "reads": 15,
+    "views": 37,
+    "slug": "how-i-ran-7-miles-without-any-training-04a1b028faf3",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 590000000,
+        "units": 2
+      }
+    },
+    "income": 2.59,
+    "firstPublishedAt": 1708875064874,
+    "title": "How I Ran 7 Miles without any Training?"
+  },
+  {
+    "clapCount": 291,
+    "id": "cb913b30de23",
+    "postResponses": 4,
+    "readingTime": 2.9462264150943396,
+    "reads": 39,
+    "views": 67,
+    "slug": "overcoming-boundaries-how-i-ran-7-miles-without-training-cb913b30de23",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 790000000,
+        "units": 1
+      }
+    },
+    "income": 1.79,
+    "firstPublishedAt": 1708217506948,
+    "title": "Overcoming Boundaries: How I Ran 7 Miles without Training."
+  },
+  {
+    "clapCount": 184,
+    "id": "759ab74f1621",
+    "postResponses": 2,
+    "readingTime": 3.2522012578616355,
+    "reads": 9,
+    "views": 27,
+    "slug": "how-did-i-plan-a-budget-friendly-adventure-to-polish-tatras-in-2024-759ab74f1621",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 370000000,
+        "units": 1
+      }
+    },
+    "income": 1.37,
+    "firstPublishedAt": 1708105583367,
+    "title": "How did I plan a Budget-Friendly Adventure to Polish Tatra's in 2024?"
+  },
+  {
+    "clapCount": 471,
+    "id": "a8f2c0de438a",
+    "postResponses": 8,
+    "readingTime": 1.5245283018867923,
+    "reads": 90,
+    "views": 166,
+    "slug": "how-did-i-get-my-first-order-in-upwork-a8f2c0de438a",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 670000000,
+        "units": 4
+      }
+    },
+    "income": 4.67,
+    "firstPublishedAt": 1707768855656,
+    "title": "How did I get my First Order In UpWork in 2024?"
+  },
+  {
+    "clapCount": 841,
+    "id": "9ffc3afa0625",
+    "postResponses": 10,
+    "readingTime": 2.0037735849056606,
+    "reads": 43,
+    "views": 83,
+    "slug": "what-are-my-earnings-for-the-first-week-with-medium-partner-program-in-2024-9ffc3afa0625",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 780000000,
+        "units": 7
+      }
+    },
+    "income": 7.78,
+    "firstPublishedAt": 1707653858176,
+    "title": "What are my earnings for the first week with the Medium Partner Program in 2024?"
+  },
+  {
+    "clapCount": 980,
+    "id": "176fea9fd762",
+    "postResponses": 15,
+    "readingTime": 2.8962264150943398,
+    "reads": 57,
+    "views": 99,
+    "slug": "what-ive-learned-from-my-first-year-on-medium-and-how-i-plan-to-continue-growing-in-2024-176fea9fd762",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 460000000,
+        "units": 9
+      }
+    },
+    "income": 9.46,
+    "firstPublishedAt": 1707038974316,
+    "title": "What I’ve Learned From My First Year on Medium, And How I Plan To Continue Growing in 2024"
+  },
+  {
+    "clapCount": 514,
+    "id": "61c416456ab9",
+    "postResponses": 4,
+    "readingTime": 6.687735849056604,
+    "reads": 37,
+    "views": 99,
+    "slug": "how-to-do-firebase-user-authentication-with-react-js-61c416456ab9",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 660000000,
+        "units": 4
+      }
+    },
+    "income": 4.66,
+    "firstPublishedAt": 1706782833411,
+    "title": "How to do React Firebase Auth?"
+  },
+  {
+    "clapCount": 72,
+    "id": "c529e9fcd281",
+    "postResponses": 0,
+    "readingTime": 4.742452830188679,
+    "reads": 31,
+    "views": 65,
+    "slug": "how-do-i-setup-nest-js-server-with-mongodb-in-2024-c529e9fcd281",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1706713794974,
+    "title": "How do I set up Nest.js server with MongoDB in 2024? Writing Back-end for registration form."
+  },
+  {
+    "clapCount": 26,
+    "id": "cf65ec449881",
+    "postResponses": 0,
+    "readingTime": 1.9606918238993711,
+    "reads": 7,
+    "views": 15,
+    "slug": "be-ready-for-livecoding-in-react-part1-spliting-screen-cf65ec449881",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1705928422558,
+    "title": "Be ready for LiveCoding with React. Part1: splitting screen"
+  },
+  {
+    "clapCount": 57,
+    "id": "5a39fb13273a",
+    "postResponses": 0,
+    "readingTime": 2.7455974842767294,
+    "reads": 16,
+    "views": 43,
+    "slug": "how-to-use-apollo-usequery-with-multiple-queries-5a39fb13273a",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1704898078565,
+    "title": "How to use Apollo useQuery with multiple queries?"
+  },
+  {
+    "clapCount": 68,
+    "id": "35e77a859c9a",
+    "postResponses": 0,
+    "readingTime": 2.3811320754716983,
+    "reads": 621,
+    "views": 1101,
+    "slug": "using-map-in-react-to-render-components-with-json-data-35e77a859c9a",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 140000000,
+        "units": 0
+      }
+    },
+    "income": 0.14,
+    "firstPublishedAt": 1702485231585,
+    "title": "How to map() in React to Render Components with JSON Data?"
+  },
+  {
+    "clapCount": 105,
+    "id": "28e868092dd7",
+    "postResponses": 0,
+    "readingTime": 2.516981132075472,
+    "reads": 354,
+    "views": 607,
+    "slug": "how-to-do-full-text-search-in-mongodb-using-mongoose-28e868092dd7",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 320000000,
+        "units": 0
+      }
+    },
+    "income": 0.32,
+    "firstPublishedAt": 1702239309925,
+    "title": "How to do a Full-Text Search in MongoDB using Mongoose"
+  },
+  {
+    "clapCount": 0,
+    "id": "3b62294698cf",
+    "postResponses": 0,
+    "readingTime": 2.6852201257861634,
+    "reads": 52,
+    "views": 100,
+    "slug": "how-to-do-simple-manual-pagination-in-react-step-by-step-3b62294698cf",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1702033878532,
+    "title": "How to do simple Manual Pagination in React? Step by Step."
+  },
+  {
+    "clapCount": 128,
+    "id": "0393c8ab6969",
+    "postResponses": 0,
+    "readingTime": 2.0830188679245283,
+    "reads": 123,
+    "views": 255,
+    "slug": "what-are-top-4ways-to-do-pagination-in-react-js-0393c8ab6969",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 100000000,
+        "units": 0
+      }
+    },
+    "income": 0.1,
+    "firstPublishedAt": 1702028139038,
+    "title": "What are TOP 4ways to do PAGINATION in React.js?"
+  },
+  {
+    "clapCount": 0,
+    "id": "db50b70b9b41",
+    "postResponses": 0,
+    "readingTime": 2.2135220125786166,
+    "reads": 46,
+    "views": 93,
+    "slug": "how-to-add-env-file-to-your-react-js-project-db50b70b9b41",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 30000000,
+        "units": 0
+      }
+    },
+    "income": 0.03,
+    "firstPublishedAt": 1701775592866,
+    "title": "How to add .env file to your React.js project?"
+  },
+  {
+    "clapCount": 0,
+    "id": "dd5117953e93",
+    "postResponses": 0,
+    "readingTime": 1.6679245283018866,
+    "reads": 13,
+    "views": 29,
+    "slug": "how-to-add-submodules-to-a-git-repository-for-client-and-server-dd5117953e93",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1701432506040,
+    "title": "How to add Submodules to a Git repository for client and server?"
+  },
+  {
+    "clapCount": 51,
+    "id": "81b7b82cd18e",
+    "postResponses": 1,
+    "readingTime": 1.5962264150943397,
+    "reads": 21,
+    "views": 36,
+    "slug": "what-is-the-approach-to-testing-and-improving-quality-assurance-81b7b82cd18e",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1699814033648,
+    "title": "What is the approach to testing and improving quality assurance?"
+  },
+  {
+    "clapCount": 0,
+    "id": "d5fec4d52bf2",
+    "postResponses": 0,
+    "readingTime": 2.260377358490566,
+    "reads": 8,
+    "views": 17,
+    "slug": "mastering-javascript-closures-your-essential-guide-d5fec4d52bf2",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1699808917107,
+    "title": "Mastering JavaScript Closures: Your Essential Guide"
+  },
+  {
+    "clapCount": 57,
+    "id": "9db3a6e731eb",
+    "postResponses": 0,
+    "readingTime": 2.1622641509433964,
+    "reads": 6,
+    "views": 23,
+    "slug": "popular-questions-involving-dynamic-programming-and-memoization-in-react-9db3a6e731eb",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1698675564452,
+    "title": "Popular Questions Involving Dynamic Programming and Memoization in React"
+  },
+  {
+    "clapCount": 7,
+    "id": "20b1273c7142",
+    "postResponses": 0,
+    "readingTime": 2.777358490566038,
+    "reads": 40,
+    "views": 87,
+    "slug": "how-do-i-create-a-pomodoro-timer-with-react-js-and-material-ui-part3-adding-css-20b1273c7142",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1697653911834,
+    "title": "How do I create a Pomodoro timer with React.js and Material UI? (Part3). Adding CSS."
+  },
+  {
+    "clapCount": 24,
+    "id": "4b1c10feb3e8",
+    "postResponses": 1,
+    "readingTime": 4.343396226415095,
+    "reads": 48,
+    "views": 99,
+    "slug": "how-do-i-create-a-pomodoro-timer-with-react-js-and-material-ui-part2-4b1c10feb3e8",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1696951483812,
+    "title": "How do I create a Pomodoro timer with React.js and Material UI? (Part2)"
+  },
+  {
+    "clapCount": 38,
+    "id": "de463340af9e",
+    "postResponses": 1,
+    "readingTime": 3.480188679245283,
+    "reads": 269,
+    "views": 502,
+    "slug": "how-do-i-create-a-pomodoro-timer-with-react-js-and-material-ui-part1-de463340af9e",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 680000000,
+        "units": 0
+      }
+    },
+    "income": 0.68,
+    "firstPublishedAt": 1696950374401,
+    "title": "How do I create a Pomodoro timer with React.js and Material UI? (Part1)"
+  },
+  {
+    "clapCount": 56,
+    "id": "99bbd92e721b",
+    "postResponses": 0,
+    "readingTime": 1.5056603773584905,
+    "reads": 60,
+    "views": 109,
+    "slug": "what-is-context-api-in-react-js-with-examples-99bbd92e721b",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 30000000,
+        "units": 0
+      }
+    },
+    "income": 0.03,
+    "firstPublishedAt": 1696844466321,
+    "title": "What is Context API in React.js with examples?"
+  },
+  {
+    "clapCount": 7,
+    "id": "e8d892b17e3",
+    "postResponses": 1,
+    "readingTime": 4.021069182389938,
+    "reads": 26,
+    "views": 62,
+    "slug": "why-do-we-have-delay-in-browser-while-using-timeout-setinterval-e8d892b17e3",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1694087734806,
+    "title": "Why do we have delay in browser while using Timeout/setInterval ?"
+  },
+  {
+    "clapCount": 17,
+    "id": "e814a703ff4b",
+    "postResponses": 1,
+    "readingTime": 2.0037735849056606,
+    "reads": 95,
+    "views": 215,
+    "slug": "how-to-create-dark-mode-in-reactjs-using-material-ui-e814a703ff4b",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1694084392060,
+    "title": "How to create Dark Mode in ReactJS using Material UI ?"
+  },
+  {
+    "clapCount": 6,
+    "id": "2c6b91568343",
+    "postResponses": 1,
+    "readingTime": 2.5735849056603777,
+    "reads": 226,
+    "views": 446,
+    "slug": "managing-multiple-repositories-in-a-codespace-on-github-2c6b91568343",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1693236869070,
+    "title": "Managing Multiple Repositories in a Codespace on GitHub"
+  },
+  {
+    "clapCount": 101,
+    "id": "f3764c1e92bd",
+    "postResponses": 2,
+    "readingTime": 2.879245283018868,
+    "reads": 6,
+    "views": 13,
+    "slug": "my-son-mark-has-been-attending-kindergarten-for-a-month-what-are-the-benefits-f3764c1e92bd",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1689223645974,
+    "title": "My son started going to Kindergarten at the age of two."
+  },
+  {
+    "clapCount": 0,
+    "id": "586fcc21455f",
+    "postResponses": 0,
+    "readingTime": 1.9018867924528302,
+    "reads": 8,
+    "views": 15,
+    "slug": "how-would-you-optimize-the-performance-of-a-react-application-that-renders-a-large-number-of-586fcc21455f",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1680536959114,
+    "title": "How would you optimize the performance of a React application that renders a large number of…"
+  },
+  {
+    "clapCount": 2,
+    "id": "77df8d8eda31",
+    "postResponses": 0,
+    "readingTime": 2.4603773584905664,
+    "reads": 13,
+    "views": 38,
+    "slug": "how-do-typescript-generics-help-you-write-less-code-77df8d8eda31",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1677089994060,
+    "title": "How Do TypeScript Generics Help You Write Less Code?"
+  },
+  {
+    "clapCount": 6,
+    "id": "400dd2e76f6e",
+    "postResponses": 0,
+    "readingTime": 1.9735849056603774,
+    "reads": 12,
+    "views": 39,
+    "slug": "how-to-learn-typescript-in-a-month-400dd2e76f6e",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1677001586528,
+    "title": "How to Learn TypeScript in a Month?"
+  },
+  {
+    "clapCount": 50,
+    "id": "7d2ae4e844da",
+    "postResponses": 0,
+    "readingTime": 2.90188679245283,
+    "reads": 3,
+    "views": 8,
+    "slug": "hello-today-chatgpt-officially-opened-for-users-from-ukraine-7d2ae4e844da",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1676739526211,
+    "title": "Hello. Today, ChatGPT officially opened for users from Ukraine."
+  },
+  {
+    "clapCount": 87,
+    "id": "73a3f484a88d",
+    "postResponses": 1,
+    "readingTime": 3.0663522012578617,
+    "reads": 55,
+    "views": 108,
+    "slug": "i-was-learning-front-end-for-1-year-as-a-back-end-developer-tips-and-tricks-73a3f484a88d",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 0,
+        "units": 0
+      }
+    },
+    "income": 0,
+    "firstPublishedAt": 1676647225452,
+    "title": "I was learning Front End for 1 year as a Back End developer."
+  },
+  {
+    "clapCount": 26,
+    "id": "dd6a44d34e80",
+    "postResponses": 0,
+    "readingTime": 2.4371069182389937,
+    "reads": 497,
+    "views": 978,
+    "slug": "how-to-create-realtime-database-in-firebase-dd6a44d34e80",
+    "earnings": {
+      "__typename": "PostEarnings",
+      "total": {
+        "__typename": "Money",
+        "currencyCode": "USD",
+        "nanos": 30000000,
+        "units": 0
+      }
+    },
+    "income": 0.03,
+    "firstPublishedAt": 1675948971490,
+    "title": "How to create Realtime Database in Firebase."
+  }
+]

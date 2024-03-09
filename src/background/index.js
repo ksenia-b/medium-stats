@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import {GET_USER_INFO} from '../queries/getUserInfo';
 import { GET_STATS } from "../queries/getStats.js";
+import { GET_DAILY_INCOME } from './../queries/getDailyIncome';
 import {calculateEarnings} from "../utils/index.js";
 
 const client = new ApolloClient({
@@ -24,8 +25,55 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 
+  if (request.type === 'GET_DAILY_INCOME') {
+    console.log('try to get daily income', request.posts);
+    const postsWithIncome = request?.posts?.filter((post) => post.income);
+
+    console.log('postsWithIncome: ', postsWithIncome)
+
+    handleGetDailyIncome({posts: postsWithIncome}).then(sendResponse);
+    return true;
+  }
+
   return true;
 })
+
+function handleGetDailyIncome({posts}) {
+  console.log('posts: ', posts)
+  const ONE_DAY = 1000 * 60 * 60 * 24;
+  const endAt = new Date().getTime();
+
+  const incomePromises = posts.map(post => {
+    const startAt = post.firstPublishedAt - ONE_DAY;
+    return fetchIncomeForPost({postId: post.id, startAt, endAt});
+  });
+
+  return Promise.all(incomePromises)
+    .then(incomeArray => {
+      // incomeArray is an array of the resolved values of the promises
+      console.log('incomeArray: ', incomeArray);
+      return incomeArray;
+    });
+
+}
+
+function fetchIncomeForPost({postId, startAt, endAt}) {
+  return client
+    .query({
+      query: GET_DAILY_INCOME,
+      variables: {
+        postId,
+        startAt,
+        endAt,
+      }
+    }).then(({data})=> {
+      return {
+        data: data?.post?.earnings?.dailyEarnings || [],
+        postId: data?.post?.id
+      }
+    })
+}
+
 
 function handleGetUser() {
   return client
@@ -64,7 +112,10 @@ function handleGetStats({username}) {
           reads: node.totalStats?.reads,
           views: node.totalStats?.views,
           slug: node.uniqueSlug,
-          earnings: node?.earnings
+          earnings: node?.earnings,
+          income: calculateEarnings(node?.earnings?.total),
+          firstPublishedAt: node?.firstPublishedAt,
+          title: node?.title,
         })
       })
     }).then((list) => {
