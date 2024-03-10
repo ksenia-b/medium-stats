@@ -1,14 +1,8 @@
-import {useMonthlyStats} from "../../hooks/useMonthlyStatsForChart";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
-import styles from './incomeChart.module.css'
-import mockedData from './mock.json';
-import mockedPosts from './posts.json';
-
-const postById = mockedPosts.reduce((acc, entry) => {
-  acc[entry.id] = entry.title;
-  return acc;
-}, {});
+import { useEffect, useState, useMemo} from "react";
+import { CustomTooltip } from './Tooltip.jsx';
+import { dateFormatter } from '../../../utils'
 
 function prepareData(data) {
   const groupedByDate = data.reduce((acc, entry) => {
@@ -34,45 +28,66 @@ function prepareData(data) {
     }
   })
 
-  return finalData.sort((a, b) => {
+  const sorted =  finalData.sort((a, b) => {
     return new Date(a.periodStartedAt) - new Date(b.periodStartedAt);
-  })
+  });
+
+  const finalDataWithFilledEmptyDays = fillArrayWithEmptyDays(sorted);
+
+  console.log('final data: ', sorted, finalDataWithFilledEmptyDays)
+
+  return finalDataWithFilledEmptyDays;
 }
 
-const dateFormatter = date => {
-  const d = new Date(date);
-  return new Intl.DateTimeFormat('en-US').format(d);
-};
+function fillArrayWithEmptyDays(data) {
+  const DAYS = 90;
+  const daysToFill = DAYS - data.length;
+  const arr = [];
 
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    const totalIncome = (payload.reduce((acc, entry) => {
-      return acc + entry.value;
-    }, 0) / 100).toFixed(2)
-
-    return (
-      <div className={styles.tooltip}>
-        <p>Date: {dateFormatter(label)}</p>
-        <p>Total income: ${totalIncome}</p>
-        <hr/>
-        {payload.filter((entry) => entry.value).map((entry) => {
-          return (
-            <p className={styles.article} key={entry.dataKey} style={{color: entry.fill}}>
-              <span>{`${postById[entry.dataKey].slice(0, 50)}... :`}</span>
-              <span>{`$${(entry.value /100).toFixed(2)}`}</span>
-            </p>
-          )
-        })}
-        </div>
-    );
+  for(let i = DAYS; i > data.length; i--) {
+    arr.push({
+      periodStartedAt: new Date().getTime() - (i * 86400000),
+    })
   }
 
-  return null;
-};
+  console.log('arr', arr);
 
-export const IncomeChart = ({username}) => {
+  return [...arr, ...data]
+}
 
-  const data = prepareData(mockedData);
+export const IncomeChart = ({posts}) => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+
+  const postsWithIncome = useMemo(() => {
+    return posts.filter((entry) => entry.income);
+  }, [posts]);
+
+  useEffect( () => {
+    if (!postsWithIncome.length) {
+      return;
+    }
+
+    async function fetchData() {
+      return chrome.runtime.sendMessage({ type: 'GET_DAILY_INCOME', posts: postsWithIncome });
+    }
+
+    fetchData().then((data) => {
+      setData(prepareData(data));
+      setLoading(false);
+    });
+  }, [postsWithIncome]);
+
+  const postById = useMemo(() => postsWithIncome.reduce((acc, entry) => {
+    acc[entry.id] = entry.title;
+    return acc;
+  }, {}), [postsWithIncome]);
+
+  if (!data || loading || !postsWithIncome.length) {
+    return (
+      <p>Loading...</p>
+    )
+  }
 
   return (
     <div>
@@ -81,20 +96,20 @@ export const IncomeChart = ({username}) => {
           height={500}
           data={data}
           margin={{
-            top: 20,
+            top: 10,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 0,
+            bottom: 20,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="periodStartedAt" tickFormatter={dateFormatter}/>
 
           <YAxis />
-          <Tooltip content={<CustomTooltip/>}/>
+          <Tooltip content={<CustomTooltip postById={postById}/>}/>
           {
-            mockedData.map((entry) => {
-              return <Bar dataKey={entry.postId} stackId="a" fill={`#${Math.floor(Math.random()*16777215).toString(16)}`} />
+            postsWithIncome.map((entry) => {
+              return <Bar dataKey={entry.id} stackId="a" fill={`#${Math.floor(Math.random()*16777215).toString(16)}`} />
             })
           }
         </BarChart>

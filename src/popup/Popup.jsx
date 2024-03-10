@@ -1,14 +1,26 @@
 import './reset.css'
 import './Popup.css'
-import { useUser } from './hooks/useUser'
-// import {Stats} from "./components/Stats";
+import {Stats} from "./components/Stats/Stats";
 import {User} from "./components/User";
-// import {ViewsReadsChart} from "./components/ViewsReadsChart/";
-import { IncomeChart} from "./components/IncomeChart/IncomeChart";
-
+import {ViewsReadsChart} from "./components/ViewsReadsChart/";
+import { useEffect, useState}  from "react";
 
 export const Popup = () => {
-  const { loading, user} = useUser();
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect( () => {
+    async function fetchData() {
+      return chrome.runtime.sendMessage({ type: 'GET_USER' });
+    }
+
+    fetchData().then((user) => {
+      console.log('got user', user);
+      setUser(user);
+      setLoading(false);
+    });
+
+  }, []);
 
   return (
     <main>
@@ -16,9 +28,9 @@ export const Popup = () => {
       {user ? (
         <>
           <User user={user}/>
-          {/*<ViewsReadsChart username={user.username}/>*/}
-          {/*<Stats username={user.username}/>*/}
-          <IncomeChart username={user.username}/>
+          <Stats username={user.username}/>
+          <ViewsReadsChart username={user.username}/>
+          {/*<IncomeChart username={user.username}/>*/}
         </>
       ) : null}
     </main>

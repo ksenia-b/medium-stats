@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import {GET_USER_INFO} from '../queries/getUserInfo';
 import { GET_STATS } from "../queries/getStats.js";
-import { GET_DAILY_INCOME } from './../queries/getDailyIncome';
+import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
+import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
 import {calculateEarnings} from "../utils/index.js";
 
 const client = new ApolloClient({
@@ -26,22 +27,52 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
   if (request.type === 'GET_DAILY_INCOME') {
-    console.log('try to get daily income', request.posts);
     const postsWithIncome = request?.posts?.filter((post) => post.income);
 
-    console.log('postsWithIncome: ', postsWithIncome)
-
     handleGetDailyIncome({posts: postsWithIncome}).then(sendResponse);
+    return true;
+  }
+
+  if (request.type === 'GET_MONTHLY_STATA_READS_VIEWS') {
+    console.log('GET_MONTHLY_STATA_READS_VIEWS');
+
+    const { username, startTime, endTime} = request;
+
+    handleGetMonthlyStatsReadsView({username, startTime, endTime}).then(sendResponse);
     return true;
   }
 
   return true;
 })
 
+function handleGetMonthlyStatsReadsView({username, startTime, endTime}) {
+  return client
+    .query({
+      variables: {
+        username,
+        input: {
+          startTime,
+          endTime
+        }
+      },
+      query: GET_MONTHLY_STATS_READS_VIEWS,
+    }).then(({data}) => {
+      return data.user.postsAggregateTimeseriesStats.points.map(point => {
+        return {
+          timestamp: point.timestamp,
+          views: point.stats.total.viewers,
+          reads: point.stats.total.readers,
+        }
+      })
+    })
+}
+
 function handleGetDailyIncome({posts}) {
   console.log('posts: ', posts)
   const ONE_DAY = 1000 * 60 * 60 * 24;
-  const endAt = new Date().getTime();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const endAt = today.getTime();
 
   const incomePromises = posts.map(post => {
     const startAt = post.firstPublishedAt - ONE_DAY;
@@ -80,7 +111,6 @@ function handleGetUser() {
   .query({
     query: GET_USER_INFO,
   }).then(({data})=> {
-    console.log('data;;;;: ', data)
     return {
       username: data.viewer.username,
       id: data.viewer.id,
