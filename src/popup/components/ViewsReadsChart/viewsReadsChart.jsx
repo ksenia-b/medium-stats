@@ -1,13 +1,29 @@
-import {useMonthlyStats} from "../../hooks/useMonthlyStatsForChart";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const dateFormatter = date => {
-  const d = new Date(date);
-  return new Intl.DateTimeFormat('en-US').format(d);
-};
+import { useState, useEffect} from "react";
+import { getToday, getTimeDaysAgo, dateFormatter } from "../../../utils";
+
+import { CustomTooltip } from './Tooltip.jsx';
 
 export const ViewsReadsChart = ({username}) => {
-  const {loading, data} = useMonthlyStats({username});
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+
+  useEffect( () => {
+    async function fetchData() {
+      return chrome.runtime.sendMessage({
+        type: 'GET_MONTHLY_STATA_READS_VIEWS',
+        username,
+        endTime: getToday(),
+        startTime: getTimeDaysAgo(90)
+      });
+    }
+
+    fetchData().then((data) => {
+      setData(data);
+      setLoading(false);
+    });
+  }, [username])
 
   if (loading) {
     return (
@@ -15,22 +31,12 @@ export const ViewsReadsChart = ({username}) => {
     )
   }
 
-  console.log('data data: ', data)
-
-  const chartData = data?.user?.postsAggregateTimeseriesStats?.points?.map((item) => ({
-    timestamp: item.timestamp,
-    views: item.stats.total.viewers,
-    reads: item.stats.total.readers
-  }));
-
-  console.log('chartData: ', chartData);
-
   return (
     <div>
       <AreaChart
         width={800}
         height={400}
-        data={chartData}
+        data={data}
         margin={{
           top: 10,
           right: 30,
@@ -40,23 +46,22 @@ export const ViewsReadsChart = ({username}) => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="timestamp" hasTick
-               scale="time"
                tickFormatter={dateFormatter}/>
         <YAxis />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />}/>
         <Area
           type="monotone"
           dataKey="views"
           stackId="1"
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke="#457bff"
+          fill="#c5e2ff"
         />
         <Area
           type="monotone"
           dataKey="reads"
           stackId="2"
-          stroke="#82ca9d"
-          fill="#82ca9d"
+          stroke="#3aaf51"
+          fill="#b5e5a4"
         />
       </AreaChart>
     </div>

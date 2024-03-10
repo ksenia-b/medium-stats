@@ -1,7 +1,6 @@
-import {gql, useQuery} from "@apollo/client";
-import {useEffect, useState} from "react";
+import {gql} from "@apollo/client";
 
-const GET_MONTHLY_STATS = gql`
+export const GET_MONTHLY_STATS_READS_VIEWS = gql`
   query MonthlyStatsAndChartQuery($username: ID!, $input: UserPostsAggregateStatsInput!) {
     user(username: $username) {
       id
@@ -38,29 +37,3 @@ const GET_MONTHLY_STATS = gql`
   }
 
 `;
-const ONE_YEAR = 1000 * 60 * 60 * 24 * 365;
-const nowTimestamp = new Date().getTime();
-const oneYearAgoTimestamp = nowTimestamp - ONE_YEAR;
-
-export const useMonthlyStats = ({username}) => {
-
-
-
-  const { loading, error, data } = useQuery(GET_MONTHLY_STATS, {
-    variables: {
-      username,
-      input: {
-        startTime: oneYearAgoTimestamp,
-        endTime: nowTimestamp
-      }
-    },
-  });
-
-  console.log('got useMonthlyStats: ', username, data, error);
-
-  return {
-    loading,
-    error,
-    data
-  }
-}
