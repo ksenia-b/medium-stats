@@ -33,6 +33,8 @@ export const ViewsReadsChart = ({username}) => {
 
   return (
     <div>
+      <h2>Reads/Views</h2>
+
       <AreaChart
         width={800}
         height={400}

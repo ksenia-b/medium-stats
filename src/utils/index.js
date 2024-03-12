@@ -24,7 +24,6 @@ export const getTimeDaysAgo = (days) => {
 }
 
 export const dateFormatter = date => {
-  console.log('try parse date: ', date);
   const d = new Date(date);
   return new Intl.DateTimeFormat('en-US').format(d);
 };

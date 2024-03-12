@@ -26,3 +26,12 @@ body {
   min-width: 20rem;
   margin: 0;
 }
+
+h2 {
+  line-height: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #242424;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 8px;
+}

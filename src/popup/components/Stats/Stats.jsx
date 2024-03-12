@@ -1,5 +1,6 @@
 import { useEffect, useState} from "react";
 import {IncomeChart} from "../IncomeChart/IncomeChart.jsx";
+import { Totals } from '../Totals/Totals.jsx';
 
 export const Stats = ({username}) => {
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,6 @@ export const Stats = ({username}) => {
     }
 
     fetchData().then((data) => {
-      console.log('got stats', data);
       setData(data);
       setLoading(false);
     });
@@ -26,11 +26,14 @@ export const Stats = ({username}) => {
 
   return (
     <div>
-      <h2>Totals</h2>
-      <pre>
-        {JSON.stringify(data.totals, null, 2)}
-      </pre>
-      <IncomeChart posts={data.list}/>
+      <h2>Lifetime</h2>
+      <Totals data={data.totals}/>
+      {
+        data.totals.income > 0 ? (
+          <IncomeChart posts={data.list}/>
+        ) : null
+      }
+
     </div>
   )
 }
