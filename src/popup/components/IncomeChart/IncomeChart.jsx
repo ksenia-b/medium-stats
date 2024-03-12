@@ -91,6 +91,8 @@ export const IncomeChart = ({posts}) => {
 
   return (
     <div>
+      <h2>Earnings by days</h2>
+
         <BarChart
           width={800}
           height={500}
