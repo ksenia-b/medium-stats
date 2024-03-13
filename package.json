@@ -1,8 +1,8 @@
 {
   "name": "medium-stats",
-  "displayName": "medium-stats",
-  "version": "0.0.0",
-  "author": "**",
+  "displayName": "Medium Stats",
+  "version": "0.0.1",
+  "author": "Maksym Rudnyi, Oksana Barshchyk",
   "description": "",
   "type": "module",
   "license": "MIT",

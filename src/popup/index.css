@@ -35,3 +35,9 @@ h2 {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 8px;
 }
+
+h2 span {
+  font-size: 13px;
+  color: #6B6B6B;
+  font-weight: 400;
+}

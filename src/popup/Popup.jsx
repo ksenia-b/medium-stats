@@ -4,6 +4,7 @@ import {Stats} from "./components/Stats/Stats";
 import {User} from "./components/User";
 import {ViewsReadsChart} from "./components/ViewsReadsChart/";
 import { useEffect, useState}  from "react";
+import { Footer } from './components/Footer/Footer'
 
 export const Popup = () => {
   const [loading, setLoading] = useState(true);
@@ -33,6 +34,8 @@ export const Popup = () => {
           {/*<IncomeChart username={user.username}/>*/}
         </>
       ) : null}
+
+      <Footer />
     </main>
   )
 }

@@ -2,8 +2,9 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import { useEffect, useState, useMemo} from "react";
 import { CustomTooltip } from './Tooltip.jsx';
-import { dateFormatter } from '../../../utils'
+import { dateFormatter, getColorByIndex } from '../../../utils'
 
+const DAYS = 90;
 function prepareData(data) {
   const groupedByDate = data.reduce((acc, entry) => {
     const post = entry.data;
@@ -28,9 +29,12 @@ function prepareData(data) {
     }
   })
 
+  console.log('final data: ', finalData);
+
   const sorted =  finalData.sort((a, b) => {
     return new Date(a.periodStartedAt) - new Date(b.periodStartedAt);
-  });
+  }).slice(-DAYS);
+
 
   const finalDataWithFilledEmptyDays = fillArrayWithEmptyDays(sorted);
 
@@ -40,8 +44,6 @@ function prepareData(data) {
 }
 
 function fillArrayWithEmptyDays(data) {
-  const DAYS = 90;
-  const daysToFill = DAYS - data.length;
   const arr = [];
 
   for(let i = DAYS; i > data.length; i--) {
@@ -91,7 +93,7 @@ export const IncomeChart = ({posts}) => {
 
   return (
     <div>
-      <h2>Earnings by days</h2>
+      <h2>Earnings by days <span>(the last 90 days)</span></h2>
 
         <BarChart
           width={800}
@@ -107,11 +109,11 @@ export const IncomeChart = ({posts}) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="periodStartedAt" tickFormatter={dateFormatter}/>
 
-          <YAxis />
+          <YAxis tickFormatter={(value) => Number((value / 100).toFixed(0))}/>
           <Tooltip content={<CustomTooltip postById={postById}/>}/>
           {
-            postsWithIncome.map((entry) => {
-              return <Bar dataKey={entry.id} stackId="a" fill={`#${Math.floor(Math.random()*16777215).toString(16)}`} />
+            postsWithIncome.map((entry, index) => {
+              return <Bar dataKey={entry.id} stackId="a" fill={getColorByIndex(index)} />
             })
           }
         </BarChart>

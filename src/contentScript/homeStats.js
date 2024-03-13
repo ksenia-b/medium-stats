@@ -5,7 +5,7 @@ function updateStatsTable(data) {
   }
   const table = document.querySelector('table');
 
-  if(!table) {
+  if (!table) {
     return;
   }
 
@@ -13,12 +13,30 @@ function updateStatsTable(data) {
   addColumnToTableHead(table, 'Claps');
   addColumnToTableHead(table, 'Responses');
 
-  const rows = table.querySelectorAll('tbody tr');
-  rows.forEach((row, index) => {
-    console.log('row: ', row, getFirstLinkHref(row));
+  const interval = setInterval(() => {
+    let rows = table.querySelectorAll('tbody tr');
+    const firstRow = rows[0];
+    const firstLink = getFirstLinkHref(firstRow);
 
+    if (firstLink) {
+      clearInterval(interval);
+      getNotUpdatedRows(data);
+    }
+  }, 500);
+}
+
+const getNotUpdatedRows = (data) => {
+  setInterval(() => {
+    const rows = document.querySelectorAll('table tbody tr:not(.updated)');
+    if (rows.length) {
+      updateTableRows(rows, data);
+    }
+  }, 1000);
+}
+
+const updateTableRows = (rows,data) => {
+  rows.forEach((row, index) => {
     const postId = getPostId(getFirstLinkHref(row));
-    console.log('postId: ', postId);
     const post = data.find(post => post.id === postId);
 
     if (!post && !post?.views) {
@@ -28,6 +46,8 @@ function updateStatsTable(data) {
     addColumnToTableRow(row, getReadRatio(post?.reads, post?.views), index);
     addColumnToTableRow(row, post.clapCount, index);
     addColumnToTableRow(row, post.postResponses, index);
+
+    row.classList.add('updated');
   })
 }
 
@@ -63,6 +83,9 @@ function addColumnToTableRow(row, value, index = -1) {
 }
 
 function getPostId(urlString) {
+  if (!urlString) {
+    return null
+  }
   const url = new URL(urlString);
   const pathSegments = url.pathname.split('/');
   const postIndex = pathSegments.indexOf('post');
@@ -125,15 +148,8 @@ function buildLifetimeTotals(totals) {
 (async () => {
   const user = await chrome.runtime.sendMessage({ type: 'GET_USER' });
   const stats = await chrome.runtime.sendMessage({ type: 'GET_STATS', username: user?.username });
-  // console.log('stats?.list: ', stats?.list[0])
-  // const dailyIncome = await chrome.runtime.sendMessage({ type: 'GET_DAILY_INCOME', posts: stats?.list });
 
-  // console.log('dailyIncome: ', dailyIncome);
-
-  // console.log('data: ----', user);
-  console.log('stats: ----', stats);
-
-  setTimeout(() => updateStatsTable(stats?.list), 1000);
+  updateStatsTable(stats?.list)
   buildLifetimeTotals(stats?.totals)
 
 

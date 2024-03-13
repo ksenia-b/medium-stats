@@ -33,7 +33,7 @@ export const ViewsReadsChart = ({username}) => {
 
   return (
     <div>
-      <h2>Reads/Views</h2>
+      <h2>Reads/Views  <span>(the last 90 days)</span></h2>
 
       <AreaChart
         width={800}

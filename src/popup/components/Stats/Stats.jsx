@@ -6,7 +6,6 @@ export const Stats = ({username}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
-
   useEffect( () => {
     async function fetchData() {
       return chrome.runtime.sendMessage({ type: 'GET_STATS', username });
