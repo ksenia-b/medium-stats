@@ -14,14 +14,14 @@ export default defineManifest({
     "https://extension-tips.glitch.me/*"
   ],
   icons: {
-    16: 'img/logo-16.png',
-    32: 'img/logo-34.png',
-    48: 'img/logo-48.png',
-    128: 'img/logo-128.png',
+    16: 'img/favicon-16x16.png',
+    32: 'img/favicon-32x32.png',
+    48: 'img/favicon-48x48.png',
+    128: 'img/favicon-128.png',
   },
   action: {
     default_popup: 'popup.html',
-    default_icon: 'img/logo-48.png',
+    default_icon: 'img/favicon-48x48.png',
   },
   // options_page: 'options.html',
   // devtools_page: 'devtools.html',
@@ -48,7 +48,7 @@ export default defineManifest({
   // },
   web_accessible_resources: [
     {
-      resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
+      resources: ['img/favicon-16x16.png', 'img/favicon-32x32.png', 'img/favicon-48x48.png', 'img/favicon-128.png'],
       matches: [],
     },
     {
