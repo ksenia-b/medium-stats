@@ -81,8 +81,6 @@ function handleGetDailyIncome({posts}) {
 
   return Promise.all(incomePromises)
     .then(incomeArray => {
-      // incomeArray is an array of the resolved values of the promises
-      console.log('incomeArray: ', incomeArray);
       return incomeArray;
     });
 
@@ -112,10 +110,10 @@ function handleGetUser() {
     query: GET_USER_INFO,
   }).then(({data})=> {
     return {
-      username: data.viewer.username,
-      id: data.viewer.id,
-      name: data.viewer.name,
-      imageId: data.viewer.imageId,
+      username: data.viewer?.username,
+      id: data.viewer?.id,
+      name: data.viewer?.name,
+      imageId: data.viewer?.imageId,
     }
   })
 }
