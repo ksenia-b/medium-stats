@@ -5,6 +5,7 @@ import {User} from "./components/User";
 import {ViewsReadsChart} from "./components/ViewsReadsChart/";
 import { useEffect, useState}  from "react";
 import { Footer } from './components/Footer/Footer'
+import { SignInInvite} from './components/SignInInvite/SignInInvite'
 
 export const Popup = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,6 @@ export const Popup = () => {
     }
 
     fetchData().then((user) => {
-      console.log('got user', user);
       setUser(user);
       setLoading(false);
     });
@@ -26,14 +26,14 @@ export const Popup = () => {
   return (
     <main>
       {loading ? <p>Loading...</p> : null}
-      {user ? (
+      {user?.username ? (
         <>
           <User user={user}/>
           <Stats username={user.username}/>
           <ViewsReadsChart username={user.username}/>
           {/*<IncomeChart username={user.username}/>*/}
         </>
-      ) : null}
+      ) : <SignInInvite/>}
 
       <Footer />
     </main>
