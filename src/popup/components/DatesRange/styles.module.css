@@ -1,0 +1,66 @@
+.datesrange {
+    display: flex;
+    position: absolute;
+}
+
+.list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px 0;
+}
+
+.item {
+    white-space: normal;
+    overflow-y: hidden;
+    line-height: 24px;
+    min-height: 32px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+}
+
+.list > div:hover {
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.separator {
+    min-height: 1px;
+    height: 1px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.label {
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px 10px;
+    width: 200px;
+    cursor: pointer;
+    position: relative;
+}
+
+.label:hover .arrow {
+    fill: #000
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    top: 36%;
+    fill: #6B6B6B
+}
+
+.label p {
+    margin: 0
+}
+
+.label p:first-child {
+    color: #6B6B6B;
+    font-size: 14px;
+}
