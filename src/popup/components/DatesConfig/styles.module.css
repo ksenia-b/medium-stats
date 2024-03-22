@@ -1,0 +1,11 @@
+.wrapper {
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}

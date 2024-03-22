@@ -1,6 +1,8 @@
 import { useEffect, useState} from "react";
 import {IncomeChart} from "../IncomeChart/IncomeChart.jsx";
-import { Totals } from '../Totals/Totals.jsx';
+import { Totals } from '../Totals/Totals';
+import {ViewsReadsChart} from "../ViewsReadsChart";
+import {DatesConfig} from "../DatesConfig";
 
 export const Stats = ({username}) => {
   const [loading, setLoading] = useState(true);
@@ -25,14 +27,29 @@ export const Stats = ({username}) => {
 
   return (
     <div>
-      <h2>Lifetime</h2>
-      <Totals data={data.totals}/>
-      {
-        data.totals.income > 0 ? (
-          <IncomeChart posts={data.list}/>
-        ) : null
-      }
+      {data ? (
+        <>
+          <h2>Lifetime</h2>
+          <Totals data={data.totals}/>
+        </>
+      ) : null}
 
+      <DatesConfig>
+        {({startTime, endTime}, datesLabel) => {
+          return (
+            <>
+              {
+                data.totals.income > 0 ? (
+                  <IncomeChart posts={data.list} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
+                ) : null
+              }
+
+              <ViewsReadsChart username={username} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
+            </>
+
+          )
+        }}
+      </DatesConfig>
     </div>
   )
 }

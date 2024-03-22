@@ -2,7 +2,6 @@ import './reset.css'
 import './Popup.css'
 import {Stats} from "./components/Stats/Stats";
 import {User} from "./components/User";
-import {ViewsReadsChart} from "./components/ViewsReadsChart/";
 import { useEffect, useState}  from "react";
 import { Footer } from './components/Footer/Footer'
 import { SignInInvite} from './components/SignInInvite/SignInInvite'
@@ -29,9 +28,7 @@ export const Popup = () => {
       {user?.username ? (
         <>
           <User user={user}/>
-          <Stats username={user.username}/>
-          <ViewsReadsChart username={user.username}/>
-          {/*<IncomeChart username={user.username}/>*/}
+          <Stats username={user.username} />
         </>
       ) : <SignInInvite/>}
 
