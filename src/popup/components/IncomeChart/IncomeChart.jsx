@@ -4,7 +4,6 @@ import { useEffect, useState, useMemo} from "react";
 import { CustomTooltip } from './Tooltip.jsx';
 import { dateFormatter, getColorByIndex } from '../../../utils'
 
-const DAYS = 90;
 function prepareData(data) {
   const groupedByDate = data.reduce((acc, entry) => {
     const post = entry.data;
@@ -33,33 +32,61 @@ function prepareData(data) {
 
   const sorted =  finalData.sort((a, b) => {
     return new Date(a.periodStartedAt) - new Date(b.periodStartedAt);
-  }).slice(-DAYS);
+  })
+
+  console.log('sorted: ', sorted)
 
 
-  const finalDataWithFilledEmptyDays = fillArrayWithEmptyDays(sorted);
+  // const finalDataWithFilledEmptyDays = fillArrayWithEmptyDays(sorted);
 
-  console.log('final data: ', sorted, finalDataWithFilledEmptyDays)
+  // console.log('final data: ', sorted, finalDataWithFilledEmptyDays)
 
-  return finalDataWithFilledEmptyDays;
+  return sorted;
 }
 
-function fillArrayWithEmptyDays(data) {
+function fillArrayWithEmptyDays(data, startTime, endTime) {
   const arr = [];
 
-  for(let i = DAYS; i > data.length; i--) {
-    arr.push({
-      periodStartedAt: new Date().getTime() - (i * 86400000),
-    })
+  for(let i = startTime; i <= endTime; i += 86400000) {
+    const found = data.find((entry) => {
+      const entryDate = new Date(entry.periodStartedAt);
+      entryDate.setHours(0, 0, 0, 0);
+
+      const currentDate = new Date(i);
+      currentDate.setHours(0, 0, 0, 0);
+
+      return entryDate.getTime() === currentDate.getTime();
+    });
+
+    if (found) {
+      arr.push(found);
+    } else {
+      arr.push({
+        periodStartedAt: i,
+      })
+    }
   }
 
-  console.log('arr', arr);
-
-  return [...arr, ...data]
+  return arr;
 }
 
-export const IncomeChart = ({posts}) => {
+export const IncomeChart = ({posts, endTime, startTime, datesLabel}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+
+  const datesRangedData = useMemo(() => {
+    if (!data) {
+      return null;
+    }
+
+    const filtered =  data.filter((entry) => {
+      return entry.periodStartedAt >= startTime && entry.periodStartedAt <= endTime;
+    });
+
+    const filled = fillArrayWithEmptyDays(filtered, startTime, endTime);
+
+    return filled;
+  }, [data, startTime, endTime]);
 
   const postsWithIncome = useMemo(() => {
     return posts.filter((entry) => entry.income);
@@ -93,12 +120,12 @@ export const IncomeChart = ({posts}) => {
 
   return (
     <div>
-      <h2>Earnings by days <span>(the last 90 days)</span></h2>
+      <h2>Earnings by days <span>({datesLabel})</span></h2>
 
         <BarChart
           width={800}
           height={500}
-          data={data}
+          data={datesRangedData}
           margin={{
             top: 10,
             right: 30,

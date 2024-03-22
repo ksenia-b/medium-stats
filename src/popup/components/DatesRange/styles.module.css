@@ -1,6 +1,7 @@
 .datesrange {
     display: flex;
-    position: absolute;
+    position: relative;
+    z-index: 1;
 }
 
 .list {

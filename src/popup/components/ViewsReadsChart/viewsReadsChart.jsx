@@ -5,17 +5,18 @@ import { getToday, getTimeDaysAgo, dateFormatter } from "../../../utils";
 
 import { CustomTooltip } from './Tooltip.jsx';
 
-export const ViewsReadsChart = ({username}) => {
+export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
+  console.log('ViewsReadsChart', username, endTime, startTime);
   useEffect( () => {
     async function fetchData() {
       return chrome.runtime.sendMessage({
         type: 'GET_MONTHLY_STATA_READS_VIEWS',
         username,
-        endTime: getToday(),
-        startTime: getTimeDaysAgo(90)
+        endTime,
+        startTime
       });
     }
 
@@ -23,7 +24,7 @@ export const ViewsReadsChart = ({username}) => {
       setData(data);
       setLoading(false);
     });
-  }, [username])
+  }, [username, endTime, startTime])
 
   if (loading) {
     return (
@@ -33,7 +34,7 @@ export const ViewsReadsChart = ({username}) => {
 
   return (
     <div>
-      <h2>Reads/Views  <span>(the last 90 days)</span></h2>
+      <h2>Reads/Views  <span>({datesLabel})</span></h2>
 
       <AreaChart
         width={800}

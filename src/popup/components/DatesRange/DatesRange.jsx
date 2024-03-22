@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getTimeDaysAgo, dateFormatter } from '../../../utils'
 import { AiFillCaretDown } from "react-icons/ai";
 
-export const DatesRange = ({onChange}) => {
+export const DatesRange = ({onChange, initialDays = 28}) => {
   const [open, setOpen] = useState(false);
   const [ startTime, setStartTime ] = useState(null);
   const [endTime, setEndTime ] = useState(null);
@@ -11,7 +11,7 @@ export const DatesRange = ({onChange}) => {
   const listRef = useRef(null);
 
   useEffect(function setInitialDateRange() {
-    handleDaysAgo(7)
+    handleDaysAgo(initialDays)
   }, []);
 
   useEffect(() => {
@@ -29,9 +29,7 @@ export const DatesRange = ({onChange}) => {
 
   useEffect(() => {
     if (startTime && endTime) {
-      console.log('startTime', startTime, new Date(startTime));
-      console.log('endTime', endTime, new Date(endTime));
-      onChange({startTime, endTime});
+      onChange({startTime, endTime, label});
     }
   }, [startTime, endTime])
 
@@ -51,8 +49,12 @@ export const DatesRange = ({onChange}) => {
       end = new Date(year, 11, 31); // December 31 of the selected year
       setLabel(year);
     }
+    end.setHours(23, 59, 59, 999);
 
-    const endTime = end > new Date() ? new Date() : end;
+    let currentDay = new Date();
+    currentDay.setHours(23, 59, 59, 999);
+
+    const endTime = end > new Date() ? currentDay : end;
 
     setStartTime(startTime.getTime());
     setEndTime(endTime.getTime());
@@ -62,8 +64,10 @@ export const DatesRange = ({onChange}) => {
   const handleDaysAgo = (days) => {
     const endTime = new Date();
     const startTime = getTimeDaysAgo(days);
+
+    endTime.setHours(23, 59, 59, 999);
     setStartTime(startTime);
-    setEndTime(endTime);
+    setEndTime(endTime.getTime());
     setLabel('Last ' + days + ' days');
     setOpen(false);
   }
