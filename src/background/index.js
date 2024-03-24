@@ -142,6 +142,7 @@ function handleGetUser() {
   .query({
     query: GET_USER_INFO,
   }).then(({data})=> {
+    console.log('dagta', data)
     return {
       username: data.viewer?.username,
       id: data.viewer?.id,

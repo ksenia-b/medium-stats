@@ -22,6 +22,8 @@ export const Popup = () => {
 
   }, []);
 
+  console.log('user: ', user)
+
   return (
     <main>
       {loading ? <p>Loading...</p> : null}
