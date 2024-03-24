@@ -17,7 +17,7 @@ export default defineManifest({
     16: 'img/favicon-16x16.png',
     32: 'img/favicon-32x32.png',
     48: 'img/favicon-48x48.png',
-    128: 'img/favicon-128.png',
+    128: 'img/favicon-128x128.png',
   },
   action: {
     default_popup: 'popup.html',
@@ -48,7 +48,7 @@ export default defineManifest({
   // },
   web_accessible_resources: [
     {
-      resources: ['img/favicon-16x16.png', 'img/favicon-32x32.png', 'img/favicon-48x48.png', 'img/favicon-128.png'],
+      resources: ['img/favicon-16x16.png', 'img/favicon-32x32.png', 'img/favicon-48x48.png', 'img/favicon-128x128.png'],
       matches: [],
     },
     {

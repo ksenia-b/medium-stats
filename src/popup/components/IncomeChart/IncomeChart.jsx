@@ -125,7 +125,7 @@ export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) =
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="periodStartedAt" tickFormatter={dateFormatter}/>
 
-          <YAxis tickFormatter={(value) => Number((value / 100).toFixed(0))}/>
+          <YAxis tickFormatter={(value) => Number((value / 100)?.toFixed(0))}/>
           <Tooltip content={<CustomTooltip postById={postById}/>}/>
           {
             postsWithIncome.map((entry, index) => {

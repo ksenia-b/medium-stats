@@ -131,7 +131,7 @@ function buildLifetimeTotals(totals) {
     const titleContentDiv = document.createElement('div');
 
     const value = document.createElement('h2');
-    value.textContent = key === 'income' ? `$${Number(totals[key]).toFixed(1)}` : totals[key];
+    value.textContent = key === 'income' ? `$${Number(totals[key])?.toFixed(1)}` : totals[key];
 
     const label = document.createElement('div');
     label.textContent = labels[key] || key;

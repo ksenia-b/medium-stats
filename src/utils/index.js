@@ -24,6 +24,9 @@ export const getTimeDaysAgo = (days) => {
 }
 
 export const dateFormatter = date => {
+  if (!date) {
+    return '';
+  }
   const d = new Date(date);
   return new Intl.DateTimeFormat('en-US').format(d);
 };

@@ -122,8 +122,6 @@ export const useSubscriptionStats = ({username}) => {
     }
   });
 
-  console.log('got user data: ', username, data, error);
-
   return {
     loading,
     error,
