@@ -98,6 +98,10 @@ function getFirstLinkHref(row) {
 }
 
 function getReadRatio(reads = 0, views = 0) {
+  if (views === 0) {
+    return '0%';
+  }
+
   const ratio = ((reads / views) * 100)?.toFixed(1);
   return `${ratio}%`;
 }
