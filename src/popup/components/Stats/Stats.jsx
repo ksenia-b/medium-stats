@@ -40,7 +40,7 @@ export const Stats = ({username}) => {
             <>
               {
                 data.totals.income > 0 ? (
-                  <IncomeChart posts={data.list} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
+                  <IncomeChart username={username} posts={data.list} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
                 ) : null
               }
 

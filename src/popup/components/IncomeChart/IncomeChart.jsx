@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import { useEffect, useState, useMemo} from "react";
-import { CustomTooltip } from './Tooltip.jsx';
+import { CustomTooltip } from './Tooltip';
 import { dateFormatter, getColorByIndex } from '../../../utils'
 
 function prepareData(data) {
@@ -28,20 +28,9 @@ function prepareData(data) {
     }
   })
 
-  console.log('final data: ', finalData);
-
-  const sorted =  finalData.sort((a, b) => {
+  return finalData.sort((a, b) => {
     return new Date(a.periodStartedAt) - new Date(b.periodStartedAt);
   })
-
-  console.log('sorted: ', sorted)
-
-
-  // const finalDataWithFilledEmptyDays = fillArrayWithEmptyDays(sorted);
-
-  // console.log('final data: ', sorted, finalDataWithFilledEmptyDays)
-
-  return sorted;
 }
 
 function fillArrayWithEmptyDays(data, startTime, endTime) {
@@ -70,7 +59,7 @@ function fillArrayWithEmptyDays(data, startTime, endTime) {
   return arr;
 }
 
-export const IncomeChart = ({posts, endTime, startTime, datesLabel}) => {
+export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -98,7 +87,7 @@ export const IncomeChart = ({posts, endTime, startTime, datesLabel}) => {
     }
 
     async function fetchData() {
-      return chrome.runtime.sendMessage({ type: 'GET_DAILY_INCOME', posts: postsWithIncome });
+      return chrome.runtime.sendMessage({ type: 'GET_DAILY_INCOME', posts: postsWithIncome, username });
     }
 
     fetchData().then((data) => {
