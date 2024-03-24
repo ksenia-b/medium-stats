@@ -9,7 +9,6 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
-  console.log('ViewsReadsChart', username, endTime, startTime);
   useEffect( () => {
     async function fetchData() {
       return chrome.runtime.sendMessage({

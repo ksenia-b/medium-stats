@@ -101,7 +101,6 @@ function handleGetMonthlyStatsReadsView({username, startTime, endTime}) {
 }
 
 function handleGetDailyIncome({posts}) {
-  console.log('posts: ', posts)
   const ONE_DAY = 1000 * 60 * 60 * 24;
   const today = new Date();
   today.setHours(0,0,0,0);
@@ -142,7 +141,6 @@ function handleGetUser() {
   .query({
     query: GET_USER_INFO,
   }).then(({data})=> {
-    console.log('dagta', data)
     return {
       username: data.viewer?.username,
       id: data.viewer?.id,

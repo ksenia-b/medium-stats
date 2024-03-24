@@ -117,7 +117,6 @@ export const useUser = () => {
 
   useEffect(()=>{
     if (!data) return
-    console.log('data: ', data)
 
     setUser({
       username: data.viewer.username,
