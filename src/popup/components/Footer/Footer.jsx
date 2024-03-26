@@ -13,7 +13,7 @@ export const Footer = () => {
         &copy; {new Date().getFullYear()}
       </div>
       <div className={styles.version}>
-        v0.1.0
+        v0.1.1
       </div>
     </footer>
   )
