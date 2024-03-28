@@ -8,6 +8,7 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 38px;
+    margin: 0;
 }
 
 .itemLabel {
@@ -15,4 +16,12 @@
     font-size: 13px;
     color: #6B6B6B;
     font-weight: 400;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.infoIcon {
+    margin-left: 4px;
+    cursor: pointer;
 }

@@ -30,7 +30,7 @@ export const Stats = ({username}) => {
       {data ? (
         <>
           <h2>Lifetime</h2>
-          <Totals data={data.totals}/>
+          <Totals data={data.totals} details={data?.totalsDetails}/>
         </>
       ) : null}
 
