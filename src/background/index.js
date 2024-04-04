@@ -4,6 +4,8 @@ import { GET_STATS } from "../queries/getStats.js";
 import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
 import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
 import {calculateEarnings} from "../utils/index.js";
+import { MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME } from './constants.js';
+import { countStoriesByVisibility } from './utils.js';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -54,7 +56,7 @@ async function handleGetDailyIncomeWithCache({posts, username}) {
 
     if (cachedData && cachedData[cacheKey]) {
       const { data, timestamp } = cachedData[cacheKey];
-      const threeHoursAgo = Date.now() - 3 * 60 * 60 * 1000;
+      const threeHoursAgo = Date.now() - LOCAL_STORAGE_TIME;
 
       if (timestamp > threeHoursAgo) {
         return data;
@@ -156,7 +158,7 @@ async function handleGetStatsWithCache({username}) {
 
     if (cachedData && cachedData[username]) {
       const { data, timestamp } = cachedData[username];
-      const threeHoursAgo = Date.now() - 3 * 60 * 60 * 1000;
+      const threeHoursAgo = Date.now() - LOCAL_STORAGE_TIME;
 
       if (timestamp > threeHoursAgo) {
         return data;
@@ -176,7 +178,6 @@ async function handleGetStatsWithCache({username}) {
   return data;
 }
 
-const MAX_DEPTH = 10;
 async function handleGetStats({username, after = "", depth = 0}) {
   const { data } = await client.query({
     variables: {
@@ -203,6 +204,7 @@ async function handleGetStats({username, after = "", depth = 0}) {
       income: calculateEarnings(node?.earnings?.total),
       firstPublishedAt: node?.firstPublishedAt,
       title: node?.title,
+      visibility: node?.visibility,
     });
   });
 
@@ -215,7 +217,7 @@ async function handleGetStats({username, after = "", depth = 0}) {
   }), {reads: 0, views: 0, earnings: 0, claps: 0, responses: 0, income: 0});
 
   const pageInfo = data.user?.postsConnection?.pageInfo;
-  const nextPageData = pageInfo?.hasNextPage && depth < MAX_DEPTH
+  const nextPageData = pageInfo?.hasNextPage && depth < MAX_RECURSION_DEPTH
     ? await handleGetStats({username, after: pageInfo.endCursor, depth: depth + 1})
     : { list: [], totals: { reads: 0, views: 0, claps: 0, responses: 0, income: 0 } };
 
@@ -226,7 +228,11 @@ async function handleGetStats({username, after = "", depth = 0}) {
       views: totals.views + nextPageData.totals.views,
       claps: totals.claps + nextPageData.totals.claps,
       responses: totals.responses + nextPageData.totals.responses,
-      income: totals.income + nextPageData.totals.income
+      income: totals.income + nextPageData.totals.income,
+      stories: list.length,
+    },
+    totalsDetails: {
+      stories: countStoriesByVisibility(list),
     }
   };
 }

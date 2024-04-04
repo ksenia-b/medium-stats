@@ -122,7 +122,8 @@ function buildLifetimeTotals(totals) {
     "views": "Views",
     "claps": "Claps",
     "responses": "Responses",
-    "income": "Earnings"
+    "income": "Earnings",
+    "stories": "Stories"
   }
   const wrapper = document.createElement('div');
   wrapper.classList.add('lifetime-totals');
