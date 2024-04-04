@@ -56,7 +56,7 @@ export default defineManifest({
       matches: [],
     }
   ],
-  permissions: ['activeTab', 'storage'],
+  permissions: ['storage'],
   // chrome_url_overrides: {
   //   newtab: 'newtab.html',
   // },
