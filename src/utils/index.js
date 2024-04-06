@@ -44,7 +44,6 @@ export const getColorByIndex = (index) => {
 }
 
 export const countStoriesByFields = (stories) => {
-  console.log('story: ', stories)
   return stories.reduce((acc, story) => {
     if (story.visibility === STORIES_VISIBILITY.PUBLIC) {
       acc.public += 1;

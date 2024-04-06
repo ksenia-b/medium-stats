@@ -4,7 +4,6 @@ import { TOTALS} from "../../../constants.js";
 import { currencyFormatter } from "../../../utils";
 
 export const Totals = ({data, details}) => {
-  console.log('data', data)
   return (
     <div className={styles.totalsWrapper}>
       {

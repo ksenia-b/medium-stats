@@ -72,8 +72,6 @@ export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) =
       return entry.periodStartedAt >= startTime && entry.periodStartedAt <= endTime;
     });
 
-    console.log('-filtered', filtered)
-
     const filled = fillArrayWithEmptyDays(filtered, startTime, endTime);
 
     return filled;
