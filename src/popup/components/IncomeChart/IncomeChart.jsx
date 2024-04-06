@@ -2,7 +2,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import { useEffect, useState, useMemo} from "react";
 import { CustomTooltip } from './Tooltip';
-import { dateFormatter, getColorByIndex } from '../../../utils'
+import {currencyFormatter, dateFormatter, getColorByIndex} from '../../../utils'
 
 function prepareData(data) {
   const groupedByDate = data.reduce((acc, entry) => {
@@ -72,10 +72,30 @@ export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) =
       return entry.periodStartedAt >= startTime && entry.periodStartedAt <= endTime;
     });
 
+    console.log('-filtered', filtered)
+
     const filled = fillArrayWithEmptyDays(filtered, startTime, endTime);
 
     return filled;
   }, [data, startTime, endTime]);
+
+  const earningsByPeriod = useMemo(() => {
+    if (!datesRangedData) {
+      return null;
+    }
+
+    return datesRangedData.map((entry) => {
+      return Object.keys(entry).reduce((acc, key) => {
+        if (key === 'periodStartedAt') {
+          return acc;
+        }
+
+        return acc + entry[key];
+      }, 0);
+    }).reduce((acc, entry) => {
+      return acc + entry;
+    }, 0);
+  }, [datesRangedData]);
 
   const postsWithIncome = useMemo(() => {
     return posts.filter((entry) => entry.income);
@@ -109,7 +129,7 @@ export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) =
 
   return (
     <div>
-      <h2>Earnings by days <span>({datesLabel})</span></h2>
+      <h2>Earnings by days <span>({datesLabel} - {currencyFormatter(earningsByPeriod / 100)})</span></h2>
 
         <BarChart
           width={800}

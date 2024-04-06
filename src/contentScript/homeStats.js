@@ -1,3 +1,5 @@
+import { TOTALS } from "../constants";
+import { currencyFormatter} from "../utils/";
 
 function updateStatsTable(data) {
   if (!data) {
@@ -117,25 +119,17 @@ function findElementByContent(content) {
 }
 
 function buildLifetimeTotals(totals) {
-  const labels = {
-    "reads": "Reads",
-    "views": "Views",
-    "claps": "Claps",
-    "responses": "Responses",
-    "income": "Earnings",
-    "stories": "Stories"
-  }
   const wrapper = document.createElement('div');
   wrapper.classList.add('lifetime-totals');
 
-  for (let key in totals) {
+  for (let key in TOTALS) {
     const titleContentDiv = document.createElement('div');
 
     const value = document.createElement('h2');
-    value.textContent = key === 'income' ? `$${Number(totals[key])?.toFixed(1)}` : totals[key];
+    value.textContent = key === 'income' ? currencyFormatter(totals[key]) : totals[key];
 
     const label = document.createElement('div');
-    label.textContent = labels[key] || key;
+    label.textContent = TOTALS[key] || key;
 
     titleContentDiv.appendChild(value);
     titleContentDiv.appendChild(label);

@@ -1,6 +1,6 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-import { useState, useEffect} from "react";
+import {useState, useEffect, useMemo} from "react";
 import { getToday, getTimeDaysAgo, dateFormatter } from "../../../utils";
 
 import { CustomTooltip } from './Tooltip.jsx';
@@ -8,6 +8,19 @@ import { CustomTooltip } from './Tooltip.jsx';
 export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+
+  const countViewReads = useMemo(() => {
+    if (!data) {
+      return null;
+    }
+
+    return data.reduce((acc, entry) => {
+      return {
+        views: acc.views + entry.views,
+        reads: acc.reads + entry.reads,
+      }
+    }, {views: 0, reads: 0});
+  }, [data]);
 
   useEffect( () => {
     async function fetchData() {
@@ -33,7 +46,7 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
 
   return (
     <div>
-      <h2>Reads/Views  <span>({datesLabel})</span></h2>
+      <h2>Reads/Views  <span>({datesLabel} - {countViewReads.reads}/{countViewReads.views})</span></h2>
 
       <AreaChart
         width={800}

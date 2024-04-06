@@ -1,4 +1,5 @@
 import styles from './styles.module.css';
+import packageJson from '../../../../package.json';
 
 export const Footer = () => {
   return (
@@ -13,7 +14,7 @@ export const Footer = () => {
         &copy; {new Date().getFullYear()}
       </div>
       <div className={styles.version}>
-        v0.1.1
+        v{packageJson.version}
       </div>
     </footer>
   )

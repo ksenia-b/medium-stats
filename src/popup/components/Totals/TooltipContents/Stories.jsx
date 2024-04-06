@@ -7,6 +7,7 @@ export const Stories = ({data}) => {
         <li>Public: {data.public}</li>
         <li>Member-only: {data.locked}</li>
         <li>Unlisted: {data.unlisted}</li>
+        <li>With earnings: {data.withEarnings}</li>
       </ul>
     </div>
   )
