@@ -1,3 +1,12 @@
+export const TOTALS = {
+  "reads": "Reads",
+  "views": "Views",
+  "claps": "Claps",
+  "responses": "Responses",
+  "income": "Earnings",
+  "stories": "Stories"
+}
+
 export const STORIES_VISIBILITY = {
   PUBLIC: 'PUBLIC',
   LOCKED: 'LOCKED',

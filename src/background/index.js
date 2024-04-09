@@ -3,9 +3,8 @@ import {GET_USER_INFO} from '../queries/getUserInfo';
 import { GET_STATS } from "../queries/getStats.js";
 import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
 import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
-import {calculateEarnings} from "../utils/index.js";
-import { MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME } from './constants.js';
-import { countStoriesByVisibility } from './utils.js';
+import { MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME } from '../constants.js';
+import { countStoriesByFields, calculateEarnings } from '../utils';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -232,7 +231,7 @@ async function handleGetStats({username, after = "", depth = 0}) {
       stories: list.length,
     },
     totalsDetails: {
-      stories: countStoriesByVisibility(list),
+      stories: countStoriesByFields(list),
     }
   };
 }
