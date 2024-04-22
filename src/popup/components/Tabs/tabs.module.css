@@ -1,0 +1,25 @@
+.tabsList {
+    display: flex;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid #f2f2f2;
+    background: #f2f2f26b;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    top: 1px;
+    color: #242424;
+}
+
+.activeTab {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.tabPanel {
+    padding: 10px;
+    min-width: 750px;
+}
