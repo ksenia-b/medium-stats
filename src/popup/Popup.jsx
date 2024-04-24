@@ -1,6 +1,7 @@
 import './reset.css'
 import './Popup.css'
 import {Stats} from "./components/Stats/Stats";
+import { Tools } from './components/Tools/Tools'
 import {User} from "./components/User";
 import React, { useEffect, useState}  from "react";
 import { Footer } from './components/Footer/Footer'
@@ -38,7 +39,9 @@ export const Popup = () => {
             <TabPanel index={0}>
               <Stats username={user.username} />
             </TabPanel>
-            <TabPanel index={1}>Content 2</TabPanel>
+            <TabPanel index={1}>
+              <Tools/>
+            </TabPanel>
           </Tabs>
 
         </>
