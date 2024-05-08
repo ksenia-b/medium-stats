@@ -2,6 +2,7 @@ import { useEffect, useState} from "react";
 import {IncomeChart} from "../IncomeChart/IncomeChart.jsx";
 import { Totals } from '../Totals/Totals';
 import {ViewsReadsChart} from "../ViewsReadsChart";
+import {DailyBundleSection} from "../DailyBundleSection";
 import {DatesConfig} from "../DatesConfig";
 
 export const Stats = ({username}) => {
@@ -45,6 +46,8 @@ export const Stats = ({username}) => {
               }
 
               <ViewsReadsChart username={username} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
+              <br/>
+              <DailyBundleSection posts={data.list}/>
             </>
 
           )

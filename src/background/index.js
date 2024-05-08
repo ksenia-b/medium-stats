@@ -3,8 +3,9 @@ import {GET_USER_INFO} from '../queries/getUserInfo';
 import { GET_STATS } from "../queries/getStats.js";
 import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
 import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
+import { GET_POST_STATS_DAILY_BUNDLE } from '../queries/getPostStatsDailyBundle.js';
 import { MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME } from '../constants.js';
-import { countStoriesByFields, calculateEarnings } from '../utils';
+import { countStoriesByFields, calculateEarnings, convertTimestampToDate } from '../utils';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -41,6 +42,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const { username, startTime, endTime} = request;
 
     handleGetMonthlyStatsReadsView({username, startTime, endTime}).then(sendResponse);
+    return true;
+  }
+
+  if (request.type === 'GET_POST_STATS_DAILY_BUNDLE') {
+    const { postsIds, startTime, endTime} = request;
+
+    handleGetAllPostsStatsDailyBundle({postsIds, startTime, endTime}).then(sendResponse);
     return true;
   }
 
@@ -101,6 +109,66 @@ function handleGetMonthlyStatsReadsView({username, startTime, endTime}) {
     })
 }
 
+async function handleGetAllPostsStatsDailyBundle({postsIds, startTime, endTime}) {
+  let results = {};
+
+  // intentionally not using Promise.all to avoid hitting the rate limit
+  for (const postId of postsIds) {
+    const data = await handleGetPostStatsDailyBundleWithCache({postId, startTime, endTime});
+    results[postId] = data;
+  }
+
+  return results;
+}
+
+function handleGetPostStatsDailyBundle({postId, startTime, endTime}) {
+  if (!startTime || !endTime) {
+    return Promise.resolve([]);
+  }
+
+  return client
+    .query({
+      variables: {
+        postStatsDailyBundleInput: {
+          fromDayStartsAt: startTime,
+          toDayStartsAt: endTime,
+          postId
+        }
+      },
+      query: GET_POST_STATS_DAILY_BUNDLE
+    }).then(({data}) => {
+      return data?.postStatsDailyBundle?.buckets;
+    })
+}
+
+async function handleGetPostStatsDailyBundleWithCache({postId, startTime, endTime}) {
+  const cacheKey = `postBundle-${postId}`;
+
+  try {
+    const cachedData = await chrome.storage.local.get([cacheKey]);
+
+    if (cachedData && cachedData[cacheKey]) {
+      const { data, timestamp } = cachedData[cacheKey];
+      const threeHoursAgo = Date.now() - LOCAL_STORAGE_TIME * 3;
+
+      if (timestamp > threeHoursAgo) {
+        return data;
+      }
+    }
+  } catch (e) {
+    console.log('Failed to get data [dailyIncome] from cache', e)
+  }
+
+  const data = await handleGetPostStatsDailyBundle({postId, startTime, endTime});
+
+  chrome.storage.local.set({[cacheKey]: {
+      data,
+      timestamp: Date.now()
+    }});
+
+  return data;
+}
+
 function handleGetDailyIncome({posts}) {
   const ONE_DAY = 1000 * 60 * 60 * 24;
   const today = new Date();
@@ -116,7 +184,6 @@ function handleGetDailyIncome({posts}) {
     .then(incomeArray => {
       return incomeArray;
     });
-
 }
 
 function fetchIncomeForPost({postId, startAt, endAt}) {

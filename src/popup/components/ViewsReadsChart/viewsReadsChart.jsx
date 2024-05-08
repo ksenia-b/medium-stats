@@ -46,11 +46,12 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
 
   return (
     <div>
-      <h2>Reads/Views  <span>({datesLabel} - {countViewReads.reads}/{countViewReads.views})</span></h2>
+      <h2>All Reads/Views <span>({datesLabel} - {countViewReads.reads}/{countViewReads.views})</span></h2>
 
       <AreaChart
         width={800}
         height={400}
+        syncId="anyId"
         data={data}
         margin={{
           top: 10,
