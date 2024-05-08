@@ -165,10 +165,7 @@ function handleGetPublicationsList() {
   return client
     .query({
       query: GET_ALL_PUBLICATIONS,
-    }).then(({data}) => {
-      console.log('publications: ', data)
-      return data
-    })
+    }).then(({data}) => data)
 }
 
 async function handleGetAllPostsStatsDailyBundle({postsIds, startTime, endTime}) {

@@ -28,7 +28,6 @@ export const DailyBundleSection = ({posts}) => {
     }
 
     fetchData().then((data) => {
-      console.log('data 0 GET_POST_STATS_DAILY_BUNDLE', data)
       setMemberViewsReadsData(getMembersViewsReadsChartData(data));
       setTotalClappers(getEngagementMetric(data, 'readersThatClappedCount'));
       setTotalFollowers(getEngagementMetric(data, 'readersThatInitiallyFollowedAuthorFromThisPostCount'));
