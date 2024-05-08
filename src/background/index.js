@@ -4,8 +4,10 @@ import { GET_STATS } from "../queries/getStats.js";
 import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
 import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
 import { GET_POST_STATS_DAILY_BUNDLE } from '../queries/getPostStatsDailyBundle.js';
-import { MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME } from '../constants.js';
+import { GET_ALL_PUBLICATIONS } from '../queries/getAllPublications.js';
+import {MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME, M_STATS_PUBLICATION_ID} from '../constants.js';
 import { countStoriesByFields, calculateEarnings, convertTimestampToDate } from '../utils';
+import {GET_COLLECTION_VIEWER_EDGE} from "../queries/getCollectionViewerEdge.js";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -52,8 +54,30 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 
+  if (request.type === 'GET_PUBLICATIONS_LIST') {
+    const { username } = request;
+    handleGetPublicationsListWithCache({username}).then(sendResponse);
+    return true;
+  }
+
+  if (request.type === 'IS_OUR_PUBLICATION_FOLLOWER') {
+    handleIsOurPublicationFollower().then(sendResponse);
+    return true;
+  }
+
   return true;
 })
+
+function handleIsOurPublicationFollower () {
+  return client
+    .query({
+      query: GET_COLLECTION_VIEWER_EDGE,
+      variables: {
+        collectionId: M_STATS_PUBLICATION_ID
+      },
+      fetchPolicy: 'no-cache'
+    }).then(({data}) => data)
+}
 
 async function handleGetDailyIncomeWithCache({posts, username}) {
   const cacheKey = `dailyIncome-${username}`;
@@ -74,6 +98,34 @@ async function handleGetDailyIncomeWithCache({posts, username}) {
   }
 
   const data = await handleGetDailyIncome({posts});
+
+  chrome.storage.local.set({[cacheKey]: {
+      data,
+      timestamp: Date.now()
+    }});
+
+  return data;
+}
+
+async function handleGetPublicationsListWithCache({username}) {
+  const cacheKey = `publications-list-${username}`;
+
+  try {
+    const cachedData = await chrome.storage.local.get([cacheKey]);
+
+    if (cachedData && cachedData[cacheKey]) {
+      const { data, timestamp } = cachedData[cacheKey];
+      const threeHoursAgo = Date.now() - LOCAL_STORAGE_TIME;
+
+      if (timestamp > threeHoursAgo) {
+        return data;
+      }
+    }
+  } catch (e) {
+    console.log('Failed to get data [publications-list] from cache', e)
+  }
+
+  const data = await handleGetPublicationsList();
 
   chrome.storage.local.set({[cacheKey]: {
       data,
@@ -106,6 +158,16 @@ function handleGetMonthlyStatsReadsView({username, startTime, endTime}) {
           reads: point.stats.total.readers,
         }
       })
+    })
+}
+
+function handleGetPublicationsList() {
+  return client
+    .query({
+      query: GET_ALL_PUBLICATIONS,
+    }).then(({data}) => {
+      console.log('publications: ', data)
+      return data
     })
 }
 

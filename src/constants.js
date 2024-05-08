@@ -15,3 +15,5 @@ export const STORIES_VISIBILITY = {
 
 export const MAX_RECURSION_DEPTH = 10;
 export const LOCAL_STORAGE_TIME = 3 * 60 * 60 * 1000;
+
+export const M_STATS_PUBLICATION_ID = "3603850c1ba3"
