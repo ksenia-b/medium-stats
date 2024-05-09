@@ -147,7 +147,7 @@ export const IncomeChart = ({username, posts, endTime, startTime, datesLabel}) =
           <Tooltip content={<CustomTooltip postById={postById}/>}/>
           {
             postsWithIncome.map((entry, index) => {
-              return <Bar dataKey={entry.id} stackId="a" fill={getColorByIndex(index)} />
+              return <Bar key={entry.id} dataKey={entry.id} stackId="a" fill={getColorByIndex(index)} />
             })
           }
         </BarChart>
