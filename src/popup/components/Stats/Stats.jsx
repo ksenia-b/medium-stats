@@ -2,11 +2,15 @@ import { useEffect, useState} from "react";
 import {IncomeChart} from "../IncomeChart/IncomeChart.jsx";
 import { Totals } from '../Totals/Totals';
 import {ViewsReadsChart} from "../ViewsReadsChart";
+import {DailyBundleSection} from "../DailyBundleSection";
 import {DatesConfig} from "../DatesConfig";
+import { M_STATS_PUBLICATION_ID} from '../../../constants.js'
+import { EngagementInvite } from "../EngagementInvite";
 
 export const Stats = ({username}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [isUserInMStatsPublication, setIsUserInMStatsPublication] = useState(false);
 
   useEffect( () => {
     async function fetchData() {
@@ -16,6 +20,17 @@ export const Stats = ({username}) => {
     fetchData().then((data) => {
       setData(data);
       setLoading(false);
+    });
+  }, [])
+
+  useEffect( () => {
+    async function fetchData() {
+      return chrome.runtime.sendMessage({ type: 'IS_OUR_PUBLICATION_FOLLOWER' });
+    }
+
+    fetchData().then((data) => {
+      const isFollowing = data?.collection?.viewerEdge?.isFollowing;
+      setIsUserInMStatsPublication(isFollowing);
     });
   }, [])
 
@@ -45,6 +60,13 @@ export const Stats = ({username}) => {
               }
 
               <ViewsReadsChart username={username} startTime={startTime} endTime={endTime} datesLabel={datesLabel}/>
+              <br/>
+              {isUserInMStatsPublication ? (
+                <DailyBundleSection posts={data.list}/>
+              ) : (
+                <EngagementInvite/>
+              )}
+
             </>
 
           )

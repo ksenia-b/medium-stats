@@ -60,3 +60,17 @@ export const countStoriesByFields = (stories) => {
     return acc;
   }, { public: 0, locked: 0, unlisted: 0, withEarnings: 0 });
 }
+
+export function convertTimestampToDate(date) {
+  var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2)
+    month = '0' + month;
+  if (day.length < 2)
+    day = '0' + day;
+
+  return [year, month, day].join('-');
+}
