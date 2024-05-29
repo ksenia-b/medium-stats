@@ -7,6 +7,7 @@ import React, { useEffect, useState}  from "react";
 import { Footer } from './components/Footer/Footer'
 import { SignInInvite} from './components/SignInInvite/SignInInvite'
 import {Tab, TabList, TabPanel, Tabs} from "./components/Tabs/Tabs.jsx";
+import { NotificationsTab } from './components/NotificationsTab/NotificationsTab';
 
 export const Popup = () => {
   const [loading, setLoading] = useState(true);
@@ -35,12 +36,16 @@ export const Popup = () => {
             <TabList>
               <Tab index={0}>Statistics</Tab>
               <Tab index={1}>Tools</Tab>
+              <Tab index={2}>Notifications</Tab>
             </TabList>
             <TabPanel index={0}>
               <Stats username={user.username} />
             </TabPanel>
             <TabPanel index={1}>
               <Tools/>
+            </TabPanel>
+            <TabPanel index={2}>
+              <NotificationsTab username={user.username}/>
             </TabPanel>
           </Tabs>
 

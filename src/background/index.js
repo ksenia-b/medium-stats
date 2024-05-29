@@ -5,6 +5,7 @@ import { GET_DAILY_INCOME } from '../queries/getDailyIncome';
 import { GET_MONTHLY_STATS_READS_VIEWS } from '../queries/getMonthlyStatsReadsViews.js';
 import { GET_POST_STATS_DAILY_BUNDLE } from '../queries/getPostStatsDailyBundle.js';
 import { GET_ALL_PUBLICATIONS } from '../queries/getAllPublications.js';
+import { GET_NOTIFICATIONS } from '../queries/getNotifications.js';
 import {MAX_RECURSION_DEPTH, LOCAL_STORAGE_TIME, M_STATS_PUBLICATION_ID} from '../constants.js';
 import { countStoriesByFields, calculateEarnings, convertTimestampToDate } from '../utils';
 import {GET_COLLECTION_VIEWER_EDGE} from "../queries/getCollectionViewerEdge.js";
@@ -57,6 +58,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'GET_PUBLICATIONS_LIST') {
     const { username } = request;
     handleGetPublicationsListWithCache({username}).then(sendResponse);
+    return true;
+  }
+
+  if (request.type === 'GET_NOTIFICATIONS') {
+    const { username } = request;
+    handleGetNotificationsWithCache({username}).then(sendResponse);
     return true;
   }
 
@@ -135,6 +142,38 @@ async function handleGetPublicationsListWithCache({username}) {
   return data;
 }
 
+async function handleGetNotificationsWithCache({username}) {
+  const cacheKey = `notifications-list-${username}`;
+
+  try {
+    const cachedData = await chrome.storage.local.get([cacheKey]);
+
+    if (cachedData && cachedData[cacheKey]) {
+      const { data, timestamp } = cachedData[cacheKey];
+      const threeHoursAgo = Date.now() - LOCAL_STORAGE_TIME;
+
+      if (timestamp > threeHoursAgo) {
+        return data;
+      }
+    }
+  } catch (e) {
+    console.log('Failed to get data [notifications] from cache', e)
+  }
+
+  const data = await handleGetNotificationsRecursive({
+    pagingOptions: null,
+    endDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7)
+  });
+
+
+  chrome.storage.local.set({[cacheKey]: {
+      data,
+      timestamp: Date.now()
+    }});
+
+  return data;
+}
+
 function handleGetMonthlyStatsReadsView({username, startTime, endTime}) {
   if (!startTime || !endTime) {
     return Promise.resolve([]);
@@ -166,6 +205,45 @@ function handleGetPublicationsList() {
     .query({
       query: GET_ALL_PUBLICATIONS,
     }).then(({data}) => data)
+}
+
+function handleGetNotificationsRecursive({ pagingOptions, results = [], endDate, depth = 0}) {
+  // if (depth > MAX_RECURSION_DEPTH) {
+  //   return results;
+  // }
+
+  return client
+    .query({
+      query: GET_NOTIFICATIONS,
+      variables: {
+        activityTypes: null,
+        pagingOptions,
+      },
+    }).then(({data}) => {
+
+      console.log('got for: ', pagingOptions)
+      const notifications = data.notificationsConnectionByActivityTypes.notifications;
+      const lastNotification = notifications[notifications.length - 1];
+      const lastNotificationDate = new Date(lastNotification.occurredAt);
+
+      if (lastNotificationDate < endDate || depth >= MAX_RECURSION_DEPTH) {
+        return results.concat(notifications);
+      }
+
+      const nextPage = data.notificationsConnectionByActivityTypes.pagingInfo.next;
+
+      return handleGetNotificationsRecursive({
+        pagingOptions: {
+          limit: nextPage.limit,
+          to: nextPage.to,
+          source: null,
+          page: null
+        },
+        results: results.concat(notifications),
+        endDate,
+        depth: depth + 1
+      });
+    })
 }
 
 async function handleGetAllPostsStatsDailyBundle({postsIds, startTime, endTime}) {
