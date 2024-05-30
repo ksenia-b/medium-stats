@@ -5,10 +5,15 @@
     justify-content: space-between;
     color: #242424;
     margin-bottom: 16px;
+    min-height: 75px;
 }
 
 .counter_wrapper {
     display: flex;
     flex-direction: row;
     gap: 16px;
+}
+
+.loading {
+    min-height: 91px;
 }

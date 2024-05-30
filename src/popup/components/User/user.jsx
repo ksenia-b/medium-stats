@@ -6,7 +6,7 @@ export const User = ({user}) => {
 
   if (loading) {
     return (
-      <p>Loading...</p>
+      <p className={styles.loading}>Loading...</p>
     )
   }
   const totals = data?.viewerEdge?.audienceStats?.totals || {};
