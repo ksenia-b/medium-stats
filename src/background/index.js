@@ -208,10 +208,6 @@ function handleGetPublicationsList() {
 }
 
 function handleGetNotificationsRecursive({ pagingOptions, results = [], endDate, depth = 0}) {
-  // if (depth > MAX_RECURSION_DEPTH) {
-  //   return results;
-  // }
-
   return client
     .query({
       query: GET_NOTIFICATIONS,
@@ -221,12 +217,11 @@ function handleGetNotificationsRecursive({ pagingOptions, results = [], endDate,
       },
     }).then(({data}) => {
 
-      console.log('got for: ', pagingOptions)
       const notifications = data.notificationsConnectionByActivityTypes.notifications;
       const lastNotification = notifications[notifications.length - 1];
       const lastNotificationDate = new Date(lastNotification.occurredAt);
 
-      if (lastNotificationDate < endDate || depth >= MAX_RECURSION_DEPTH) {
+      if (lastNotificationDate < endDate || depth >= (MAX_RECURSION_DEPTH * 2)) {
         return results.concat(notifications);
       }
 

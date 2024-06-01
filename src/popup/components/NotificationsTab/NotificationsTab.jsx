@@ -44,9 +44,6 @@ export const NotificationsTab = ({username}) => {
     return sortedUsers.slice(0, 5)
   }, [data])
 
-  console.log('top5Users: ', top5Users)
-  console.log('notifications', notifications)
-
   if (loading) {
     return (
       <p>Loading...</p>
