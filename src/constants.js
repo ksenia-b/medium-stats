@@ -36,5 +36,7 @@ export const NOTIFICATION_TYPES = {
   'post_added_to_catalog': 'Added your story to their list',
   'collection_post_published': 'Published.',
   'users_email_subscribed': 'Subscribed to get your stories via email.',
-  'users_following_you': 'Started following you.'
+  'users_following_you': 'Started following you.',
+  'collection_post_submitted': 'Submitted to your publication',
+  'post_collaborated_published': 'Published a story you collaborated on together.'
 }
