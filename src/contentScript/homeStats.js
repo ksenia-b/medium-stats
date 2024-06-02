@@ -11,16 +11,12 @@ function updateStatsTable(data) {
     return;
   }
 
-  addColumnToTableHead(table, 'Read ratio');
-  addColumnToTableHead(table, 'Claps');
-  addColumnToTableHead(table, 'Responses');
-
-  const interval = setInterval(() => {
+  const interval = setInterval(function waitForTableAppears() {
     let rows = table.querySelectorAll('tbody tr');
     const firstRow = rows[0];
-    const firstLink = getFirstLinkHref(firstRow);
+    const isTableRenderedAndLinksToArticlesAdded = getFirstLinkHref(firstRow);
 
-    if (firstLink) {
+    if (isTableRenderedAndLinksToArticlesAdded) {
       clearInterval(interval);
       getNotUpdatedRows(data);
     }
@@ -45,43 +41,25 @@ const updateTableRows = (rows,data) => {
       return;
     }
 
-    addColumnToTableRow(row, getReadRatio(post?.reads, post?.views), index);
-    addColumnToTableRow(row, post.clapCount, index);
-    addColumnToTableRow(row, post.postResponses, index);
+    addColumnToTableRow(row, getReadRatio(post?.reads, post?.views), 'Read ratio');
+    addColumnToTableRow(row, post.clapCount, 'Claps');
+    addColumnToTableRow(row, post.postResponses, 'Responses');
 
     row.classList.add('updated');
   })
 }
 
-function addColumnToTableHead(table, title) {
-  const thead = table.querySelector('thead');
-  const tr = thead.querySelector('tr');
-  const theLastTh = tr.querySelector('th:last-child');
-  const classesFromTheLastTh = theLastTh.getAttribute('class');
-  const th = document.createElement('th');
+function addColumnToTableRow(row, value, label) {
+  const tdToClone = row.querySelector('td:nth-child(3)');
+  const clonedTd = tdToClone.cloneNode(true);
 
-  th.classList.add(...classesFromTheLastTh.split(' '));
-  th.innerHTML = title;
-  tr.appendChild(th);
-}
+  const valueDiv = clonedTd.querySelector('a > div > div:first-child p');
+  const labelDiv = clonedTd.querySelector('a > div > div:last-child p');
 
-function addColumnToTableRow(row, value, index = -1) {
-  const td = document.createElement('td');
-  const lastTdClasses = row.querySelector('td:last-child').getAttribute('class');
-  td.classList.add(...lastTdClasses.split(' '));
+  valueDiv.innerHTML = value;
+  labelDiv.textContent = label;
 
-  const a = document.createElement('a');
-  const lastAClasses = row.querySelector('td:last-child a').getAttribute('class');
-  a.classList.add(...lastAClasses.split(' '));
-
-  const div = document.createElement('div');
-  const lastDivClasses = row.querySelector('td:last-child a div').getAttribute('class');
-  div.classList.add(...lastDivClasses.split(' '));
-
-  div.innerHTML = value;
-  a.appendChild(div);
-  td.appendChild(a);
-  row.appendChild(td);
+  row.appendChild(clonedTd);
 }
 
 function getPostId(urlString) {
@@ -138,11 +116,10 @@ function buildLifetimeTotals(totals) {
   }
 
   const lifetime = findElementByContent('Lifetime');
-  const parent = lifetime.parentNode;
+  const parent = lifetime.parentNode.parentNode;
 
   parent.parentNode.insertBefore(wrapper, parent.nextSibling);
 }
-
 
 (async () => {
   const user = await chrome.runtime.sendMessage({ type: 'GET_USER' });
@@ -150,6 +127,4 @@ function buildLifetimeTotals(totals) {
 
   updateStatsTable(stats?.list)
   buildLifetimeTotals(stats?.totals)
-
-
 })();
