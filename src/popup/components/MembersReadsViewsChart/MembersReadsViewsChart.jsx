@@ -1,20 +1,20 @@
-import {useMemo} from "react";
-import {  dateFormatter } from "../../../utils";
-import {Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis} from "recharts";
+import { useMemo } from 'react';
+import {
+  Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis,
+} from 'recharts';
+import { dateFormatter } from '../../../utils';
 import { CustomTooltip } from './Tooltip.jsx';
 
-export const MembersReadsViewsChart = ({memberViewsReadsData}) => {
+export function MembersReadsViewsChart({ memberViewsReadsData }) {
   const countViewReads = useMemo(() => {
     if (!memberViewsReadsData) {
       return null;
     }
 
-    return memberViewsReadsData.reduce((acc, entry) => {
-      return {
-        views: acc.views + entry.views,
-        reads: acc.reads + entry.reads,
-      }
-    }, {views: 0, reads: 0});
+    return memberViewsReadsData.reduce((acc, entry) => ({
+      views: acc.views + entry.views,
+      reads: acc.reads + entry.reads,
+    }), { views: 0, reads: 0 });
   }, [memberViewsReadsData]);
 
   if (!memberViewsReadsData) {
@@ -23,7 +23,16 @@ export const MembersReadsViewsChart = ({memberViewsReadsData}) => {
 
   return (
     <>
-      <h2>Members only Reads/Views <span>(Last 28 days - {countViewReads.reads}/{countViewReads.views})</span></h2>
+      <h2>
+        Members only Reads/Views
+        <span>
+          (Last 28 days -
+          {countViewReads.reads}
+          /
+          {countViewReads.views}
+          )
+        </span>
+      </h2>
 
       <AreaChart
         width={800}
@@ -38,10 +47,13 @@ export const MembersReadsViewsChart = ({memberViewsReadsData}) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="timestamp" hasTick
-               tickFormatter={dateFormatter}/>
+        <XAxis
+          dataKey="timestamp"
+          hasTick
+          tickFormatter={dateFormatter}
+        />
         <YAxis />
-        <Tooltip content={<CustomTooltip />}/>
+        <Tooltip content={<CustomTooltip />} />
         <Area
           type="monotone"
           dataKey="views"
@@ -58,5 +70,5 @@ export const MembersReadsViewsChart = ({memberViewsReadsData}) => {
         />
       </AreaChart>
     </>
-  )
+  );
 }

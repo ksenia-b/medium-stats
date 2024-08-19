@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_ALL_PUBLICATIONS = gql`
   query PublishingSettingsQuery {
@@ -15,4 +15,4 @@ export const GET_ALL_PUBLICATIONS = gql`
       }
     }
   }
-`
+`;

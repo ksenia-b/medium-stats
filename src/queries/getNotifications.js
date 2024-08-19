@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_NOTIFICATIONS = gql`
   query NotificationsQuery($activityTypes: [String!], $pagingOptions: PagingOptions) {
@@ -35,4 +35,4 @@ export const GET_NOTIFICATIONS = gql`
       }
     }
   }
-`
+`;

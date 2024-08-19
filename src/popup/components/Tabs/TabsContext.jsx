@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from 'react';
 
 const TabsContext = createContext({});
 
-export const TabsProvider = ({ children, defaultIndex = 0 }) => {
+export function TabsProvider({ children, defaultIndex = 0 }) {
   const [activeTab, setActiveTab] = useState(defaultIndex);
 
   return (
@@ -10,7 +10,7 @@ export const TabsProvider = ({ children, defaultIndex = 0 }) => {
       {children}
     </TabsContext.Provider>
   );
-};
+}
 
 export const useTabs = () => {
   const context = useContext(TabsContext);

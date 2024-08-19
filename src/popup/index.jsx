@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Popup } from './Popup'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Popup } from './Popup';
+import './index.css';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
@@ -16,4 +16,4 @@ ReactDOM.createRoot(document.getElementById('app')).render(
       <Popup />
     </ApolloProvider>
   </React.StrictMode>,
-)
+);

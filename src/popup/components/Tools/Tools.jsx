@@ -1,10 +1,10 @@
-import { CapitalizeMyTitle} from '../CapitalizeMyTitle'
+import { CapitalizeMyTitle } from '../CapitalizeMyTitle';
 
-export const Tools = () => {
+export function Tools() {
   return (
     <div>
       <h2>Capitalize The Title</h2>
-      <CapitalizeMyTitle/>
+      <CapitalizeMyTitle />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_STATS = gql`
   query LifetimeStoriesStatsQuery($username: ID!, $first: Int!, $after: String!, $orderBy: UserPostsOrderBy, $filter: UserPostsFilter) {

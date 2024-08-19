@@ -1,6 +1,6 @@
 import React from 'react';
+import { AiOutlineCopy } from 'react-icons/ai';
 import styles from './styles.module.css';
-import { AiOutlineCopy } from "react-icons/ai";
 
 const CAPITALIZATION_OPTIONS = {
   TITLE_CASE: 'Title Case',
@@ -15,11 +15,11 @@ const CAPITALIZATION_OPTIONS = {
 function toAPATitleCase(text) {
   // Words to be capitalized in lowercase
   const lowercaseWords = [
-    'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet'
+    'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet',
   ];
 
   // Split the text into words
-  let words = text.split(' ');
+  const words = text.split(' ');
 
   // Capitalize the first word
   words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
@@ -40,7 +40,7 @@ const capitalizeText = (text, caseType) => {
     case CAPITALIZATION_OPTIONS.TITLE_CASE:
       return toAPATitleCase(text);
     case CAPITALIZATION_OPTIONS.SENTENCE_CASE:
-      return text.split(/(?<=[.!?])\s/).map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase()).join(' ');
+      return text.split(/(?<=[.!?])\s/).map((sentence) => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase()).join(' ');
     case CAPITALIZATION_OPTIONS.UPPERCASE:
       return text.toUpperCase();
     case CAPITALIZATION_OPTIONS.LOWERCASE:
@@ -50,13 +50,13 @@ const capitalizeText = (text, caseType) => {
     case CAPITALIZATION_OPTIONS.AIT_CASE:
       return text.replace(/\b(\w)(\w*)/g, (m, p1, p2) => p1.toUpperCase() + p2.toLowerCase());
     case CAPITALIZATION_OPTIONS.TOGGLE:
-      return text.split('').map((char) => char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()).join('');
+      return text.split('').map((char) => (char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase())).join('');
     default:
       return text;
   }
 };
 
-export const CapitalizeMyTitle = () => {
+export function CapitalizeMyTitle() {
   const [text, setText] = React.useState('');
   const [caseType, setCaseType] = React.useState(CAPITALIZATION_OPTIONS.TITLE_CASE);
   const textareaRef = React.useRef();
@@ -80,17 +80,17 @@ export const CapitalizeMyTitle = () => {
       <div className={styles.wrapper}>
         <textarea ref={textareaRef} type="text" value={text} onChange={handleInputChange} className={styles.input} />
         <button onClick={handleCopyClick}>
-          <AiOutlineCopy size={'30px'}/>
+          <AiOutlineCopy size="30px" />
         </button>
       </div>
 
       <div className={styles.optionsWrapper}>
         {Object.entries(CAPITALIZATION_OPTIONS).map(([key, value]) => (
-          <button className={value === caseType ? styles.activeButton : null } key={key} onClick={() => handleCaseTypeChange(value)}>
+          <button className={value === caseType ? styles.activeButton : null} key={key} onClick={() => handleCaseTypeChange(value)}>
             {value}
           </button>
         ))}
       </div>
     </div>
   );
-};
+}
