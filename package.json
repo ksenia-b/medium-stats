@@ -23,7 +23,8 @@
     "fmt": "prettier --write '**/*.{jsx,js,json,css,scss,md}'",
     "zip": "npm run build && node src/zip.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",
@@ -60,9 +61,14 @@
     "globals": "^15.9.0",
     "gulp": "^4.0.2",
     "gulp-zip": "^6.0.0",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.9",
     "prettier": "3.3.3",
     "prop-types": "^15.8.1",
     "storybook": "^8.0.0-beta.5",
     "vite": "^4.4.11"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
