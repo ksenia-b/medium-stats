@@ -51,6 +51,7 @@
     "@vitejs/plugin-react": "^4.1.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
@@ -59,7 +60,7 @@
     "globals": "^15.9.0",
     "gulp": "^4.0.2",
     "gulp-zip": "^6.0.0",
-    "prettier": "^3.0.3",
+    "prettier": "3.3.3",
     "prop-types": "^15.8.1",
     "storybook": "^8.0.0-beta.5",
     "vite": "^4.4.11"

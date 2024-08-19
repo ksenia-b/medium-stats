@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from "@apollo/client";
 
 export const GET_USER_INFO = gql`
   query AvatarMenuQuery {

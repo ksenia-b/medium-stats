@@ -1,4 +1,4 @@
-import styles from './counter.module.css';
+import styles from "./counter.module.css";
 
 export function Counter({ title, count, previousCount }) {
   const difference = count - previousCount;
@@ -7,10 +7,8 @@ export function Counter({ title, count, previousCount }) {
       <p className={styles.title}>{title}</p>
       <p className={styles.count}>{count}</p>
       <p className={styles.difference}>
-        {difference > 0 ? '+' : ''}
-        {difference}
-        {' '}
-        from last month
+        {difference > 0 ? "+" : ""}
+        {difference} from last month
       </p>
     </div>
   );

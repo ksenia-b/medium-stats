@@ -1,9 +1,7 @@
-import {
-  Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis,
-} from 'recharts';
-import { useMemo } from 'react';
-import { dateFormatter } from '../../../utils/index.js';
-import { EngagementTooltip } from '../EngagementTooltip';
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+import { useMemo } from "react";
+import { dateFormatter } from "../../../utils/index.js";
+import { EngagementTooltip } from "../EngagementTooltip";
 
 export function EngagementBarChart({ total, title }) {
   const totalCounter = useMemo(() => {
@@ -11,24 +9,21 @@ export function EngagementBarChart({ total, title }) {
       return null;
     }
 
-    return total.reduce((acc, entry) => ({
-      member: acc.member + entry.member,
-      nonMember: acc.nonMember + entry.nonMember,
-    }), { member: 0, nonMember: 0 });
+    return total.reduce(
+      (acc, entry) => ({
+        member: acc.member + entry.member,
+        nonMember: acc.nonMember + entry.nonMember,
+      }),
+      { member: 0, nonMember: 0 },
+    );
   }, [total]);
 
   return (
     <div>
       <h2>
-        {title}
-        :
-        {' '}
+        {title}:{" "}
         <span>
-          (Last 28 days -
-          {totalCounter.member}
-          /
-          {totalCounter.nonMember}
-          )
+          (Last 28 days -{totalCounter.member}/{totalCounter.nonMember})
         </span>
       </h2>
       <BarChart

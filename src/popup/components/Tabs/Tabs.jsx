@@ -1,5 +1,5 @@
-import { TabsProvider, useTabs } from './TabsContext.jsx';
-import styles from './tabs.module.css';
+import { TabsProvider, useTabs } from "./TabsContext.jsx";
+import styles from "./tabs.module.css";
 
 export function Tabs({ children, defaultIndex }) {
   return <TabsProvider defaultIndex={defaultIndex}>{children}</TabsProvider>;
@@ -12,7 +12,10 @@ export function TabList({ children }) {
 export function Tab({ index, children }) {
   const { activeTab, setActiveTab } = useTabs();
   return (
-    <button className={`${styles.tab} ${activeTab === index ? styles.activeTab : ''}`} onClick={() => setActiveTab(index)}>
+    <button
+      className={`${styles.tab} ${activeTab === index ? styles.activeTab : ""}`}
+      onClick={() => setActiveTab(index)}
+    >
       {children}
     </button>
   );
@@ -20,5 +23,7 @@ export function Tab({ index, children }) {
 
 export function TabPanel({ index, children }) {
   const { activeTab } = useTabs();
-  return activeTab === index ? <div className={styles.tabPanel}>{children}</div> : null;
+  return activeTab === index ? (
+    <div className={styles.tabPanel}>{children}</div>
+  ) : null;
 }

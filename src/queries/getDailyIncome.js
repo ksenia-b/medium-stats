@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_DAILY_INCOME = gql`
   query GetDailyIncome($postId: ID!, $startAt: Long!, $endAt: Long!) {

@@ -2,7 +2,9 @@ export const getMembersViewsReadsChartData = (data) => {
   const memberViewsReadsData = {};
   Object.keys(data).map((key) => {
     const post = data[key];
-    const membersOnly = post.filter((bucket) => bucket.membershipType === 'MEMBER');
+    const membersOnly = post.filter(
+      (bucket) => bucket.membershipType === "MEMBER",
+    );
 
     membersOnly.forEach((bucket) => {
       const timestamp = bucket.dayStartsAt;
@@ -18,7 +20,9 @@ export const getMembersViewsReadsChartData = (data) => {
     });
   });
 
-  return Object.values(memberViewsReadsData).sort((a, b) => a.timestamp - b.timestamp);
+  return Object.values(memberViewsReadsData).sort(
+    (a, b) => a.timestamp - b.timestamp,
+  );
 };
 
 export const getEngagementMetric = (data, metricKey) => {
@@ -38,8 +42,10 @@ export const getEngagementMetric = (data, metricKey) => {
           nonMember: 0,
         };
       }
-      total[timestamp].member += bucket.membershipType === 'MEMBER' ? bucket[metricKey] : 0;
-      total[timestamp].nonMember += bucket.membershipType === 'NONMEMBER' ? bucket[metricKey] : 0;
+      total[timestamp].member +=
+        bucket.membershipType === "MEMBER" ? bucket[metricKey] : 0;
+      total[timestamp].nonMember +=
+        bucket.membershipType === "NONMEMBER" ? bucket[metricKey] : 0;
     });
   });
 

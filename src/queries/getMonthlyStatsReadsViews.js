@@ -1,7 +1,10 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_MONTHLY_STATS_READS_VIEWS = gql`
-  query MonthlyStatsAndChartQuery($username: ID!, $input: UserPostsAggregateStatsInput!) {
+  query MonthlyStatsAndChartQuery(
+    $username: ID!
+    $input: UserPostsAggregateStatsInput!
+  ) {
     user(username: $username) {
       id
       postsAggregateTimeseriesStats(input: $input) {
@@ -35,5 +38,4 @@ export const GET_MONTHLY_STATS_READS_VIEWS = gql`
     }
     __typename
   }
-
 `;

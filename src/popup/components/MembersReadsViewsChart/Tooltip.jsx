@@ -1,9 +1,9 @@
-import { dateFormatter } from '../../../utils';
-import styles from './tooltip.module.css';
+import { dateFormatter } from "../../../utils";
+import styles from "./tooltip.module.css";
 
 const LABELS = {
-  views: 'Member Views',
-  reads: 'Member Reads',
+  views: "Member Views",
+  reads: "Member Reads",
 };
 
 export function CustomTooltip({ active, payload, label }) {

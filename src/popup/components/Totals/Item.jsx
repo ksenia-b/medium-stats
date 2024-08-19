@@ -1,17 +1,20 @@
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import styles from './styles.module.css';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { Stories } from './TooltipContents/Stories';
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import styles from "./styles.module.css";
+import { Tooltip } from "../Tooltip/Tooltip";
+import { Stories } from "./TooltipContents/Stories";
 
-export function Item({
-  value, label, diff, details,
-}) {
+export function Item({ value, label, diff, details }) {
   return (
     <>
       <div>
         <p className={styles.itemLabel}>
           {label}
-          {details ? <AiOutlineInfoCircle data-tooltip-id="details" className={styles.infoIcon} /> : null}
+          {details ? (
+            <AiOutlineInfoCircle
+              data-tooltip-id="details"
+              className={styles.infoIcon}
+            />
+          ) : null}
         </p>
         <p className={styles.itemValue}>{value}</p>
         {diff ? (
@@ -26,7 +29,6 @@ export function Item({
           <Stories data={details} />
         </Tooltip>
       ) : null}
-
     </>
   );
 }

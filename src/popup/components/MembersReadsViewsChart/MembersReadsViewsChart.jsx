@@ -1,9 +1,14 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 import {
-  Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis,
-} from 'recharts';
-import { dateFormatter } from '../../../utils';
-import { CustomTooltip } from './Tooltip.jsx';
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { dateFormatter } from "../../../utils";
+import { CustomTooltip } from "./Tooltip.jsx";
 
 export function MembersReadsViewsChart({ memberViewsReadsData }) {
   const countViewReads = useMemo(() => {
@@ -11,10 +16,13 @@ export function MembersReadsViewsChart({ memberViewsReadsData }) {
       return null;
     }
 
-    return memberViewsReadsData.reduce((acc, entry) => ({
-      views: acc.views + entry.views,
-      reads: acc.reads + entry.reads,
-    }), { views: 0, reads: 0 });
+    return memberViewsReadsData.reduce(
+      (acc, entry) => ({
+        views: acc.views + entry.views,
+        reads: acc.reads + entry.reads,
+      }),
+      { views: 0, reads: 0 },
+    );
   }, [memberViewsReadsData]);
 
   if (!memberViewsReadsData) {
@@ -26,11 +34,7 @@ export function MembersReadsViewsChart({ memberViewsReadsData }) {
       <h2>
         Members only Reads/Views
         <span>
-          (Last 28 days -
-          {countViewReads.reads}
-          /
-          {countViewReads.views}
-          )
+          (Last 28 days -{countViewReads.reads}/{countViewReads.views})
         </span>
       </h2>
 
@@ -47,11 +51,7 @@ export function MembersReadsViewsChart({ memberViewsReadsData }) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="timestamp"
-          hasTick
-          tickFormatter={dateFormatter}
-        />
+        <XAxis dataKey="timestamp" hasTick tickFormatter={dateFormatter} />
         <YAxis />
         <Tooltip content={<CustomTooltip />} />
         <Area

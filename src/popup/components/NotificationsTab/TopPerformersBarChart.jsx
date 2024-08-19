@@ -1,7 +1,7 @@
-import {Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis} from "recharts";
-import {useMemo} from "react";
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+import { useMemo } from "react";
 
-export const TopPerformersBarChart = ({data}) => {
+export const TopPerformersBarChart = ({ data }) => {
   const totalCounter = useMemo(() => {
     if (!data) {
       return null;
@@ -11,13 +11,15 @@ export const TopPerformersBarChart = ({data}) => {
       return {
         user: item.user?.name,
         count: item.count,
-      }
+      };
     });
   }, [data]);
 
   return (
     <div>
-      <h2>Top performers: <span>(Last 7 days)</span></h2>
+      <h2>
+        Top performers: <span>(Last 7 days)</span>
+      </h2>
       <BarChart
         width={760}
         height={200}
@@ -30,11 +32,11 @@ export const TopPerformersBarChart = ({data}) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="user"/>
+        <XAxis dataKey="user" />
         <Tooltip />
         <YAxis />
-        <Bar dataKey='count' stackId="a" fill="#B3B3B3" />
+        <Bar dataKey="count" stackId="a" fill="#B3B3B3" />
       </BarChart>
     </div>
-  )
-}
+  );
+};

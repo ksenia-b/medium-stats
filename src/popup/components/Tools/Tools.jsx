@@ -1,4 +1,4 @@
-import { CapitalizeMyTitle } from '../CapitalizeMyTitle';
+import { CapitalizeMyTitle } from "../CapitalizeMyTitle";
 
 export function Tools() {
   return (

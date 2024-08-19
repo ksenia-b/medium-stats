@@ -1,10 +1,10 @@
-import { useState, useCallback } from 'react';
-import styles from './styles.module.css';
-import { DatesRange } from '../DatesRange/DatesRange';
+import { useState, useCallback } from "react";
+import styles from "./styles.module.css";
+import { DatesRange } from "../DatesRange/DatesRange";
 
 export function DatesConfig({ children }) {
   const [dates, setDates] = useState({ startTime: null, endTime: null });
-  const [datesLabel, setDatesLabel] = useState('--');
+  const [datesLabel, setDatesLabel] = useState("--");
   const onChange = useCallback((dates) => {
     setDates({
       startTime: dates.startTime,

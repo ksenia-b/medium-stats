@@ -1,5 +1,5 @@
-import { dateFormatter } from '../../../utils';
-import styles from './tooltip.module.css';
+import { dateFormatter } from "../../../utils";
+import styles from "./tooltip.module.css";
 
 export function CustomTooltip({ active, payload, label }) {
   if (active && payload && payload.length) {

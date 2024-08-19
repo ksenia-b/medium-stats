@@ -1,9 +1,12 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_POST_STATS_DAILY_BUNDLE = gql`
-  query useStatsPostNewChartDataQuery($postStatsDailyBundleInput: PostStatsDailyBundleInput!) {
-
-    postStatsDailyBundle(postStatsDailyBundleInput: $postStatsDailyBundleInput) {
+  query useStatsPostNewChartDataQuery(
+    $postStatsDailyBundleInput: PostStatsDailyBundleInput!
+  ) {
+    postStatsDailyBundle(
+      postStatsDailyBundleInput: $postStatsDailyBundleInput
+    ) {
       buckets {
         ...newBucketTimestamps_postStatsDailyBundleBucket
         __typename
