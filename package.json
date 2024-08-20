@@ -26,7 +26,8 @@
     "build-storybook": "storybook build",
     "prepare": "husky",
     "test": "vitest",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "test:ci": "vitest run --coverage"
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",
