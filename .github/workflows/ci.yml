@@ -23,7 +23,6 @@ jobs:
       - name: Run ESLint
         run: yarn lint
   test:
-    needs: lint
     name: Test code
 
     runs-on: ubuntu-latest
@@ -35,4 +34,4 @@ jobs:
         run: yarn install --immutable
 
       - name: Run Tests
-        run: vitest run --coverage
+        run: yarn test:ci
