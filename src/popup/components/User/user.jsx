@@ -1,6 +1,7 @@
 import { useSubscriptionStats } from "../../hooks/useSubscriptions.js";
+import { Avatar, Counter } from "./components";
 import styles from "./user.module.css";
-import { Counter, Avatar } from "./components";
+
 export const User = ({ user }) => {
   const { loading, error, data } = useSubscriptionStats({
     username: user.username,

@@ -1,22 +1,23 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GET_USER_INFO } from "../queries/getUserInfo";
-import { GET_STATS } from "../queries/getStats.js";
-import { GET_DAILY_INCOME } from "../queries/getDailyIncome";
-import { GET_MONTHLY_STATS_READS_VIEWS } from "../queries/getMonthlyStatsReadsViews.js";
-import { GET_POST_STATS_DAILY_BUNDLE } from "../queries/getPostStatsDailyBundle.js";
-import { GET_ALL_PUBLICATIONS } from "../queries/getAllPublications.js";
-import { GET_NOTIFICATIONS } from "../queries/getNotifications.js";
+
 import {
-  MAX_RECURSION_DEPTH,
   LOCAL_STORAGE_TIME,
+  MAX_RECURSION_DEPTH,
   M_STATS_PUBLICATION_ID,
 } from "../constants.js";
+import { GET_ALL_PUBLICATIONS } from "../queries/getAllPublications.js";
+import { GET_COLLECTION_VIEWER_EDGE } from "../queries/getCollectionViewerEdge.js";
+import { GET_DAILY_INCOME } from "../queries/getDailyIncome";
+import { GET_MONTHLY_STATS_READS_VIEWS } from "../queries/getMonthlyStatsReadsViews.js";
+import { GET_NOTIFICATIONS } from "../queries/getNotifications.js";
+import { GET_POST_STATS_DAILY_BUNDLE } from "../queries/getPostStatsDailyBundle.js";
+import { GET_STATS } from "../queries/getStats.js";
+import { GET_USER_INFO } from "../queries/getUserInfo";
 import {
-  countStoriesByFields,
   calculateEarnings,
   convertTimestampToDate,
+  countStoriesByFields,
 } from "../utils";
-import { GET_COLLECTION_VIEWER_EDGE } from "../queries/getCollectionViewerEdge.js";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),

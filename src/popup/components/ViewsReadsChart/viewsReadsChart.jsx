@@ -1,16 +1,16 @@
+import { useEffect, useMemo, useState } from "react";
+
 import {
-  AreaChart,
   Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
-import { useState, useEffect, useMemo } from "react";
-import { getToday, getTimeDaysAgo, dateFormatter } from "../../../utils";
-
+import { dateFormatter, getTimeDaysAgo, getToday } from "../../../utils";
 import { CustomTooltip } from "./Tooltip.jsx";
 
 export function ViewsReadsChart({ username, endTime, startTime, datesLabel }) {

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import {
   Area,
   AreaChart,
@@ -7,6 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
 import { dateFormatter } from "../../../utils";
 import { CustomTooltip } from "./Tooltip.jsx";
 

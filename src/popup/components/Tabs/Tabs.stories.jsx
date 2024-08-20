@@ -1,5 +1,6 @@
 import React from "react";
-import { Tabs, TabList, Tab, TabPanel } from "./Tabs";
+
+import { Tab, TabList, TabPanel, Tabs } from "./Tabs";
 
 function Template(args) {
   return (

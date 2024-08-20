@@ -1,7 +1,8 @@
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import styles from "./styles.module.css";
+
 import { Tooltip } from "../Tooltip/Tooltip";
 import { Stories } from "./TooltipContents/Stories";
+import styles from "./styles.module.css";
 
 export function Item({ value, label, diff, details }) {
   return (

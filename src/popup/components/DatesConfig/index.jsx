@@ -1,6 +1,7 @@
-import { useState, useCallback } from "react";
-import styles from "./styles.module.css";
+import { useCallback, useState } from "react";
+
 import { DatesRange } from "../DatesRange/DatesRange";
+import styles from "./styles.module.css";
 
 export function DatesConfig({ children }) {
   const [dates, setDates] = useState({ startTime: null, endTime: null });

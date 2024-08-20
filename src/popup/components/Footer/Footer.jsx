@@ -1,5 +1,5 @@
-import styles from "./styles.module.css";
 import packageJson from "../../../../package.json";
+import styles from "./styles.module.css";
 
 export function Footer() {
   return (

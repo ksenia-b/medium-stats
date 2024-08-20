@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
+
+import { dateFormatter, getTimeDaysAgo } from "../../../utils";
 import styles from "./styles.module.css";
-import { getTimeDaysAgo, dateFormatter } from "../../../utils";
 
 export function DatesRange({ onChange, initialDays = 28 }) {
   const [open, setOpen] = useState(false);

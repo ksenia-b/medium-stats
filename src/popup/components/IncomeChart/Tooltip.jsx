@@ -1,5 +1,5 @@
+import { currencyFormatter, dateFormatter } from "../../../utils";
 import styles from "./incomeChart.module.css";
-import { dateFormatter, currencyFormatter } from "../../../utils";
 
 export const CustomTooltip = ({ active, payload, label, postById }) => {
   if (active && payload && payload.length) {

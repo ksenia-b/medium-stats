@@ -1,5 +1,7 @@
-import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { useMemo } from "react";
+
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+
 import { dateFormatter } from "../../../utils/index.js";
 import { EngagementTooltip } from "../EngagementTooltip";
 

@@ -1,7 +1,8 @@
-import styles from "./styles.module.css";
-import { NOTIFICATION_TYPES, OKSANA_USERNAME } from "../../../constants.js";
-import { AiOutlineCopy } from "react-icons/ai";
 import React, { useRef } from "react";
+import { AiOutlineCopy } from "react-icons/ai";
+
+import { NOTIFICATION_TYPES, OKSANA_USERNAME } from "../../../constants.js";
+import styles from "./styles.module.css";
 
 function getUniqueUsers(users) {
   const addedUsers = {};

@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import { Section } from "./Section.jsx";
 import { TopPerformersBarChart } from "./TopPerformersBarChart.jsx";
 

@@ -1,5 +1,6 @@
-import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+
+import { gql, useQuery } from "@apollo/client";
 
 const GET_SUBSCRIPTIONS_STATS = gql`
   query SubscriptionStats($username: ID, $pagingOptions: PagingOptions) {

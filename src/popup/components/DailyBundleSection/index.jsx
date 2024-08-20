@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import { getTimeDaysAgo } from "../../../utils";
-import { getEngagementMetric, getMembersViewsReadsChartData } from "./utils.js";
-import { MembersReadsViewsChart } from "../MembersReadsViewsChart";
 import { EngagementBarChart } from "../EngagementBarChart/EngagementBarChart.jsx";
+import { MembersReadsViewsChart } from "../MembersReadsViewsChart";
+import { getEngagementMetric, getMembersViewsReadsChartData } from "./utils.js";
 
 const startTime = getTimeDaysAgo(28);
 const endTime = new Date();

@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineCopy } from "react-icons/ai";
+
 import styles from "./styles.module.css";
 
 const CAPITALIZATION_OPTIONS = {

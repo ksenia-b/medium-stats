@@ -1,13 +1,14 @@
-import "./reset.css";
+import React, { useEffect, useState } from "react";
+
 import "./Popup.css";
+import { Footer } from "./components/Footer/Footer";
+import { NotificationsTab } from "./components/NotificationsTab/NotificationsTab";
+import { SignInInvite } from "./components/SignInInvite/SignInInvite";
 import { Stats } from "./components/Stats/Stats";
+import { Tab, TabList, TabPanel, Tabs } from "./components/Tabs/Tabs.jsx";
 import { Tools } from "./components/Tools/Tools";
 import { User } from "./components/User";
-import React, { useEffect, useState } from "react";
-import { Footer } from "./components/Footer/Footer";
-import { SignInInvite } from "./components/SignInInvite/SignInInvite";
-import { Tab, TabList, TabPanel, Tabs } from "./components/Tabs/Tabs.jsx";
-import { NotificationsTab } from "./components/NotificationsTab/NotificationsTab";
+import "./reset.css";
 
 export const Popup = () => {
   const [loading, setLoading] = useState(true);

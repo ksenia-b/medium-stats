@@ -1,7 +1,7 @@
-import { Item } from "./Item.jsx";
-import styles from "./styles.module.css";
 import { TOTALS } from "../../../constants.js";
 import { currencyFormatter } from "../../../utils";
+import { Item } from "./Item.jsx";
+import styles from "./styles.module.css";
 
 export function Totals({ data, details }) {
   return (

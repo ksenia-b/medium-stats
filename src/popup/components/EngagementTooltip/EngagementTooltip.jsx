@@ -1,5 +1,5 @@
-import styles from "./tooltip.module.css";
 import { dateFormatter } from "../../../utils";
+import styles from "./tooltip.module.css";
 
 const LABELS = {
   member: "Members",

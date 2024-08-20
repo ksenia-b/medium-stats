@@ -1,7 +1,7 @@
-import { Banner } from "./Banner.jsx";
 import areaChart from "../../../assets/img/EngagementInvite/area-chart.png";
 import barChart1 from "../../../assets/img/EngagementInvite/bar-chart-1.png";
 import barChart2 from "../../../assets/img/EngagementInvite/bar-chart-2.png";
+import { Banner } from "./Banner.jsx";
 
 export function EngagementInvite() {
   return (

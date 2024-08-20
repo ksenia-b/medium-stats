@@ -1,12 +1,13 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { useEffect, useMemo, useState } from "react";
 
-import { useEffect, useState, useMemo } from "react";
-import { CustomTooltip } from "./Tooltip";
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+
 import {
   currencyFormatter,
   dateFormatter,
   getColorByIndex,
 } from "../../../utils";
+import { CustomTooltip } from "./Tooltip";
 
 function prepareData(data) {
   const groupedByDate = data.reduce((acc, entry) => {

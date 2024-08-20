@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+
+import { M_STATS_PUBLICATION_ID } from "../../../constants.js";
+import { DailyBundleSection } from "../DailyBundleSection";
+import { DatesConfig } from "../DatesConfig";
+import { EngagementInvite } from "../EngagementInvite";
 import { IncomeChart } from "../IncomeChart/IncomeChart.jsx";
 import { Totals } from "../Totals/Totals";
 import { ViewsReadsChart } from "../ViewsReadsChart";
-import { DailyBundleSection } from "../DailyBundleSection";
-import { DatesConfig } from "../DatesConfig";
-import { M_STATS_PUBLICATION_ID } from "../../../constants.js";
-import { EngagementInvite } from "../EngagementInvite";
 
 export const Stats = ({ username }) => {
   const [loading, setLoading] = useState(true);
