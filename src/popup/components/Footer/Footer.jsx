@@ -28,7 +28,10 @@ export function Footer() {
           Report a bug
         </a>
       </div>
-      <div>&copy; {new Date().getFullYear()}</div>
+      <div>
+        &copy;
+        {new Date().getFullYear()}
+      </div>
       <div className={styles.version}>v{packageJson.version}</div>
     </footer>
   );
