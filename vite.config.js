@@ -1,21 +1,35 @@
-import { defineConfig } from 'vite'
-import { crx } from '@crxjs/vite-plugin'
-import react from '@vitejs/plugin-react'
-import manifest from './src/manifest.js'
+import { crx } from "@crxjs/vite-plugin";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+import manifest from "./src/manifest.js";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
     build: {
       emptyOutDir: true,
-      outDir: 'build',
+      outDir: "build",
       rollupOptions: {
         output: {
-          chunkFileNames: 'assets/chunk-[hash].js',
+          chunkFileNames: "assets/chunk-[hash].js",
         },
       },
     },
 
     plugins: [crx({ manifest }), react()],
-  }
-})
+
+    test: {
+      coverage: {
+        reporter: ["text", "html"],
+        reportsDirectory: ".coverage",
+        thresholds: {
+          statements: 80,
+          branches: 1,
+          functions: 1,
+          lines: 1,
+        },
+      },
+    },
+  };
+});

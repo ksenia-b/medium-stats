@@ -1,4 +1,4 @@
-import {gql, useQuery} from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 export const GET_USER_INFO = gql`
   query AvatarMenuQuery {
@@ -113,22 +113,22 @@ export const GET_USER_INFO = gql`
 
 export const useUser = () => {
   const { loading, error, data } = useQuery(GET_USER_INFO);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
 
-  useEffect(()=>{
-    if (!data) return
+  useEffect(() => {
+    if (!data) return;
 
     setUser({
       username: data.viewer.username,
       id: data.viewer.id,
       name: data.viewer.name,
       imageId: data.viewer.imageId,
-    })
-  }, [data])
+    });
+  }, [data]);
 
   return {
     loading,
     error,
-    user
-  }
-}
+    user,
+  };
+};

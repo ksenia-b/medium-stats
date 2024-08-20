@@ -1,7 +1,13 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const GET_STATS = gql`
-  query LifetimeStoriesStatsQuery($username: ID!, $first: Int!, $after: String!, $orderBy: UserPostsOrderBy, $filter: UserPostsFilter) {
+  query LifetimeStoriesStatsQuery(
+    $username: ID!
+    $first: Int!
+    $after: String!
+    $orderBy: UserPostsOrderBy
+    $filter: UserPostsFilter
+  ) {
     user(username: $username) {
       id
       postsConnection(
@@ -45,7 +51,6 @@ export const GET_STATS = gql`
       shareKey
       creatorPartnerProgramEnrollmentStatus
     }
-
   }
 
   fragment StoriesStatsTable_post on Post {

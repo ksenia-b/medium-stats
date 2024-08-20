@@ -1,1 +1,1 @@
-export * from './viewsReadsChart';
+export * from "./viewsReadsChart";

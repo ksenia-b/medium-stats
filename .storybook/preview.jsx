@@ -1,7 +1,7 @@
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -11,12 +11,16 @@ const preview = {
   },
   decorators: [
     (Story) => (
-      <div style={{ fontFamily: 'sohne, "Helvetica Neue", Helvetica, Arial, sans-serif' }}>
+      <div
+        style={{
+          fontFamily: 'sohne, "Helvetica Neue", Helvetica, Arial, sans-serif',
+        }}
+      >
         {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
         <Story />
       </div>
     ),
   ],
-}
+};
 
-export default preview
+export default preview;

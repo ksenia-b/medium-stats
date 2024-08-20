@@ -1,5 +1,6 @@
-import {gql, useQuery} from "@apollo/client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+
+import { gql, useQuery } from "@apollo/client";
 
 const GET_SUBSCRIPTIONS_STATS = gql`
   query SubscriptionStats($username: ID, $pagingOptions: PagingOptions) {
@@ -112,19 +113,18 @@ const GET_SUBSCRIPTIONS_STATS = gql`
     username
     __typename
   }
-
 `;
 
-export const useSubscriptionStats = ({username}) => {
+export const useSubscriptionStats = ({ username }) => {
   const { loading, error, data } = useQuery(GET_SUBSCRIPTIONS_STATS, {
     variables: {
       username,
-    }
+    },
   });
 
   return {
     loading,
     error,
-    data: data?.userResult
-  }
-}
+    data: data?.userResult,
+  };
+};

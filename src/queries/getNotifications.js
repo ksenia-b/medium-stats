@@ -1,8 +1,14 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const GET_NOTIFICATIONS = gql`
-  query NotificationsQuery($activityTypes: [String!], $pagingOptions: PagingOptions) {
-    notificationsConnectionByActivityTypes(activityTypes: $activityTypes, paging: $pagingOptions) {
+  query NotificationsQuery(
+    $activityTypes: [String!]
+    $pagingOptions: PagingOptions
+  ) {
+    notificationsConnectionByActivityTypes(
+      activityTypes: $activityTypes
+      paging: $pagingOptions
+    ) {
       notifications {
         notificationType
         occurredAt
@@ -35,4 +41,4 @@ export const GET_NOTIFICATIONS = gql`
       }
     }
   }
-`
+`;

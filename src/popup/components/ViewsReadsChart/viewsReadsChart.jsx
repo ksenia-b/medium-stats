@@ -1,11 +1,19 @@
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useEffect, useMemo, useState } from "react";
 
-import {useState, useEffect, useMemo} from "react";
-import { getToday, getTimeDaysAgo, dateFormatter } from "../../../utils";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
-import { CustomTooltip } from './Tooltip.jsx';
+import { dateFormatter, getTimeDaysAgo, getToday } from "../../../utils";
+import { CustomTooltip } from "./Tooltip.jsx";
 
-export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
+export function ViewsReadsChart({ username, endTime, startTime, datesLabel }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -14,21 +22,22 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
       return null;
     }
 
-    return data.reduce((acc, entry) => {
-      return {
+    return data.reduce(
+      (acc, entry) => ({
         views: acc.views + entry.views,
         reads: acc.reads + entry.reads,
-      }
-    }, {views: 0, reads: 0});
+      }),
+      { views: 0, reads: 0 },
+    );
   }, [data]);
 
-  useEffect( () => {
+  useEffect(() => {
     async function fetchData() {
       return chrome.runtime.sendMessage({
-        type: 'GET_MONTHLY_STATA_READS_VIEWS',
+        type: "GET_MONTHLY_STATA_READS_VIEWS",
         username,
         endTime,
-        startTime
+        startTime,
       });
     }
 
@@ -36,17 +45,20 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
       setData(data);
       setLoading(false);
     });
-  }, [username, endTime, startTime])
+  }, [username, endTime, startTime]);
 
   if (loading) {
-    return (
-      <p>Loading...</p>
-    )
+    return <p>Loading...</p>;
   }
 
   return (
     <div>
-      <h2>All Reads/Views <span>({datesLabel} - {countViewReads.reads}/{countViewReads.views})</span></h2>
+      <h2>
+        All Reads/Views
+        <span>
+          ({datesLabel} -{countViewReads.reads}/{countViewReads.views})
+        </span>
+      </h2>
 
       <AreaChart
         width={800}
@@ -61,10 +73,9 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="timestamp" hasTick
-               tickFormatter={dateFormatter}/>
+        <XAxis dataKey="timestamp" hasTick tickFormatter={dateFormatter} />
         <YAxis />
-        <Tooltip content={<CustomTooltip />}/>
+        <Tooltip content={<CustomTooltip />} />
         <Area
           type="monotone"
           dataKey="views"
@@ -81,5 +92,5 @@ export const ViewsReadsChart = ({username, endTime, startTime, datesLabel}) => {
         />
       </AreaChart>
     </div>
-  )
+  );
 }
