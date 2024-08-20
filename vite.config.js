@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
         reporter: ["text", "html"],
         reportsDirectory: ".coverage",
         thresholds: {
-          statements: 1,
+          statements: 80,
           branches: 1,
           functions: 1,
           lines: 1,
