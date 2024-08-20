@@ -22,3 +22,16 @@ jobs:
 
       - name: Run ESLint
         run: yarn lint
+  test:
+    name: Test code
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Run Tests
+        run: vitest run --coverage
